@@ -6,4 +6,4 @@ if [ -z ${FOUNDATION} ]; then
   exit 0;
 fi
 
-fly -t cp sp -p $FOUNDATION -c ./pipeline.yml
+fly -t cp sp -p $FOUNDATION -c ./pipeline.yml -l ./vars.yml
