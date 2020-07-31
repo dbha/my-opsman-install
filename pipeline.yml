@@ -17,6 +17,9 @@ resources:
     private_key: ((plat-auto-pipes-deploy-key.private_key))
     branch: master
 
+
+
+
 jobs:
 
 - name: install-ops-manager

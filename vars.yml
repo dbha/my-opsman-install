@@ -1,1 +1,4 @@
 pipeline-repo: git@github.com:dbha/my-opsman-install.git
+iaas-configurations_0_vcenter_password: ((iaas-configurations_0_vcenter_password))
+iaas-configurations_0_vcenter_username: ((iaas-configurations_0_vcenter_username))
+opsman_ssh_key: ((opsman_ssh_key.private_key))
