@@ -10,8 +10,13 @@ resources:
   source:
     product_slug: platform-automation
     api_token: ((pivnet-refresh-token))
-
 - name: config
+  type: git
+  source:
+    uri: ((pipeline-repo))
+    private_key: ((plat-auto-pipes-deploy-key.private_key))
+    branch: master
+- name: vars
   type: git
   source:
     uri: ((pipeline-repo))
@@ -51,6 +56,36 @@ jobs:
       params:
         CONFIG_FILE: download-ops-manager.yml
 
+    - task: create-vm
+      image: platform-automation-image
+      file: platform-automation-tasks/tasks/create-vm.yml
+      params:
+        VARS_FILES: vars/vars.yml
+      input_mapping:
+        state: config
+        image: downloaded-product
+
+      ensure:
+        do:
+          - task: make-commit
+            image: platform-automation-image
+            file: platform-automation-tasks/tasks/make-git-commit.yml
+            input_mapping:
+              repository: config
+              file-source: generated-state
+            output_mapping:
+              repository-commit: config-commit
+            params:
+              FILE_SOURCE_PATH: state.yml
+              FILE_DESTINATION_PATH: state.yml
+              GIT_AUTHOR_EMAIL: "pcf-pipeline-bot@example.com"
+              GIT_AUTHOR_NAME: "Platform Automation Toolkit Bot"
+              COMMIT_MESSAGE: 'Update state file'
+          - put: config
+            params:
+              repository: config-commit
+              merge: true
+
 - name: test
   plan:
 
@@ -68,3 +103,4 @@ jobs:
     - task: test
       image: platform-automation-image
       file: platform-automation-tasks/tasks/test.yml
+
