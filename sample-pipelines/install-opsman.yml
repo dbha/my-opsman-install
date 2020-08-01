@@ -71,6 +71,7 @@ resources:
     ## care only patch version chage.
     version_pattern: "m.n.p"
 
+# reusable stuff
 credhub_interpolate: &credhub_interpolate
   image: platform-automation-image
   file: platform-automation-tasks/tasks/credhub_interpolate.yml
