@@ -71,21 +71,19 @@ resources:
     ## care only patch version chage.
     version_pattern: "m.n.p"
 
-
-
-#credhub_interpolate: &credhub_interpolate
-#  image: platform-automation-image
-#  file: platform-automation-tasks/tasks/credhub_interpolate.yml
-#  input_mapping:
-#    files: configuration
-#  params:
-#    CREDHUB_SERVER: ((credhub.server))
-#    CREDHUB_CA_CERT: ((credhub.ca_cert))
-#    CREDHUB_CLIENT: ((credhub.client))
-#    CREDHUB_SECRET: ((credhub.secret))
-#    PREFIX: /concourse/((foundation))
-#    INTERPOLATION_PATHS: ((foundation))/opsman ((foundation))/vars
-#    SKIP_MISSING: false
+credhub_interpolate: &credhub_interpolate
+  image: platform-automation-image
+  file: platform-automation-tasks/tasks/credhub_interpolate.yml
+  input_mapping:
+    files: configuration
+  params:
+    CREDHUB_SERVER: ((credhub.server))
+    CREDHUB_CA_CERT: ((credhub.ca_cert))
+    CREDHUB_CLIENT: ((credhub.client))
+    CREDHUB_SECRET: ((credhub.secret))
+    PREFIX: /concourse/((foundation))
+    INTERPOLATION_PATHS: foundations/((foundation))/opsman foundations/((foundation))/vars
+    SKIP_MISSING: false
 
 #- name: config
 #  type: git
