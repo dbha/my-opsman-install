@@ -26,7 +26,7 @@ s3:
     bbr-backup: dbha-bbr-backup
 
 credhub:
-  server: https://concourse.cp.pksdemo.net:8844
+  server: https://credhub.pksdemo.net:8844
   #ca_cert: ((credhub_ca_cert.certificate))
   ca_cert: ""
   client: ((credhub_client.username))
