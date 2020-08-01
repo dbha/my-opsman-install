@@ -14,4 +14,4 @@ fly -t cp sp -p "${PRODUCT_NAME}-install-opsman" \
 -c $WORK_DIR/${PIPELINE_YAML} \
 -v foundation=${FOUNDATION} \
 -v product-name=${PRODUCT_NAME} \
--l $WORK_DIR/foundations/${FOUNDATION}/pipeline-vars/params.yml
+-l ../foundations/${FOUNDATION}/pipeline-vars/params.yml
