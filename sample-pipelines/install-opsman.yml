@@ -111,7 +111,7 @@ credhub_interpolate: &credhub_interpolate
 # for *.yaml, *.yml ( ie. semver-version.yaml)
 credhub_interpolate-product-version-git-opsnam: &credhub_interpolate-product-version-git-opsman
   image: platform-automation-image
-  file: pipelines/tasks/credhub-interpolate.yml
+  file: platform-automation-tasks/tasks/credhub-interpolate.yml
   input_mapping:
     files: product-version-git-opsman
   params:
