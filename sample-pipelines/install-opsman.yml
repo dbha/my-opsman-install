@@ -74,7 +74,7 @@ resources:
 # reusable stuff
 credhub_interpolate: &credhub_interpolate
   image: platform-automation-image
-  file: platform-automation-tasks/tasks/credhub_interpolate.yml
+  file: platform-automation-tasks/tasks/credhub-interpolate.yml
   input_mapping:
     files: configuration
   params:
@@ -95,7 +95,7 @@ credhub_interpolate: &credhub_interpolate
 
 credhub_interpolate: &credhub_interpolate
   image: platform-automation-image
-  file: platform-automation-tasks/tasks/credhub_interpolate.yml
+  file: platform-automation-tasks/tasks/credhub-interpolate.yml
   input_mapping:
     files: configuration
   params:
@@ -110,7 +110,7 @@ credhub_interpolate: &credhub_interpolate
 # for *.yaml, *.yml ( ie. semver-version.yaml)
 credhub_interpolate-product-version-git-opsnam: &credhub_interpolate-product-version-git-opsman
   image: platform-automation-image
-  file: pipelines/tasks/credhub_interpolate.yml
+  file: pipelines/tasks/credhub-interpolate.yml
   input_mapping:
     files: product-version-git-opsman
   params:
