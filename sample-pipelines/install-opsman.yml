@@ -207,7 +207,7 @@ jobs:
         image: platform-automation-image
         file: platform-automation-tasks/tasks/create-vm.yml
         input_mapping:
-          image: downloaded-files ## moving big files is slow. this file doesn't move. and will use 'downloaded-files' as it is
+          image: downloaded-files # moving big files is slow. this file doesn't move. and will use 'downloaded-files' as it is
           state: configuration # have to provide empty state.yml file. 'interpolated-files' doesn't have state.yml file.
           config: interpolated-files # for products/ops-manager.yml
           vars: interpolated-files
