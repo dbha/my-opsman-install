@@ -104,7 +104,8 @@ credhub_interpolate: &credhub_interpolate
     CREDHUB_CLIENT: ((credhub.client))
     CREDHUB_SECRET: ((credhub.secret))
     PREFIX: /concourse/main
-    INTERPOLATION_PATHS: foundations/((foundation))/opsman foundations/((foundation))/vars foundations/((foundation))/pipeline-vars foundations/((foundation))/products
+    INTERPOLATION_PATHS: foundations/((foundation))/pipeline-vars foundations/((foundation))/opsman foundations/((foundation))/vars foundations/((foundation))/products
+#    INTERPOLATION_PATHS: foundations/((foundation))/pipeline-vars foundations/((foundation))/opsman foundations/((foundation))/vars foundations/((foundation))/products
     SKIP_MISSING: false
 
 # for *.yaml, *.yml ( ie. semver-version.yaml)
