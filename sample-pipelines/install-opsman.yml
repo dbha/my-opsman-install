@@ -5,11 +5,11 @@ resource_types:
     repository: pivotalcf/pivnet-resource
     tag: latest-final
 resources:
-- name: platform-automation
-  type: pivnet
-  source:
-    product_slug: platform-automation
-    api_token: ((pivnet-refresh-token))
+#- name: platform-automation
+#  type: pivnet
+#  source:
+#    product_slug: platform-automation
+#    api_token: ((pivnet-refresh-token))
 
 - name: platform-automation-tasks
   type: s3
