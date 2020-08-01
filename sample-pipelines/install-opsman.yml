@@ -123,23 +123,30 @@ jobs:
           - get: variable
 
       ## tile & stemcell
-      - task: download-product-from-s3
-        image: platform-automation-image
-        file: platform-automation-tasks/tasks/download-product-s3.yml
-        input_mapping:
-          ## semver-config output semver-config.yml to be use as a input of download-product.yml
-          ## semver-config.yaml is output of 'product-version-git' task.
-          ## will find a folder name of '[pivnet-product-slug, product-version]' in s3 bucket.
-          ## will find a file name 'pivnet-product-slug, product-version, pivnet-file-glob' under the folder.
-          ## stemcell slug will come from meta in product file.
-          ## ex) https://s3/pivnet-products/[elastic-runtime,2.6.3]/cf-2.6.3-build.21.pivotal
-          ## ex) https://s3/pivnet-products/[stemcells-ubuntu-xenial,250.56]/bosh-stemcell-250.56-vsphere-esxi-ubuntu-xenial-go_agent.tgz
-          config: product-version-git
-          ## will provide additional params for semver-config.yaml
-          vars: interpolated-files
-        params:
-          CONFIG_FILE: semver-config.yaml
+#      - task: download-product-from-s3
+#        image: platform-automation-image
+#        file: platform-automation-tasks/tasks/download-product-s3.yml
+#        input_mapping:
+#          ## semver-config output semver-config.yml to be use as a input of download-product.yml
+#          ## semver-config.yaml is output of 'product-version-git' task.
+#          ## will find a folder name of '[pivnet-product-slug, product-version]' in s3 bucket.
+#          ## will find a file name 'pivnet-product-slug, product-version, pivnet-file-glob' under the folder.
+#          ## stemcell slug will come from meta in product file.
+#          ## ex) https://s3/pivnet-products/[elastic-runtime,2.6.3]/cf-2.6.3-build.21.pivotal
+#          ## ex) https://s3/pivnet-products/[stemcells-ubuntu-xenial,250.56]/bosh-stemcell-250.56-vsphere-esxi-ubuntu-xenial-go_agent.tgz
+#          config: product-version-git
+#          ## will provide additional params for semver-config.yaml
+#          vars: interpolated-files
+#        params:
+#          CONFIG_FILE: semver-config.yaml
 #          VARS_FILES: vars/((foundation))/vars/global.yml
+
+      - task: download-opsman-image
+        image: platform-automation-image
+        file: platform-automation-tasks/tasks/download-product.yml
+        input_mapping: {config: configuration }
+        params:
+          CONFIG_FILE: foundations/((foundation))/download-products/opsman.yml
 
       - task: upload-product
         image: platform-automation-image
