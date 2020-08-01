@@ -79,22 +79,3 @@ jobs:
             params:
               repository: config-commit
               merge: true
-
-- name: test
-  plan:
-
-    - get: platform-automation-image
-      resource: platform-automation
-      params:
-        globs: ["*image*.tgz"]
-        unpack: true
-    - get: platform-automation-tasks
-      resource: platform-automation
-      params:
-        globs: ["*tasks*.zip"]
-        unpack: true
-
-    - task: test
-      image: platform-automation-image
-      file: platform-automation-tasks/tasks/test.yml
-
