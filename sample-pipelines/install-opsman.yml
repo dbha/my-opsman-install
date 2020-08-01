@@ -11,6 +11,29 @@ resources:
     product_slug: platform-automation
     api_token: ((pivnet-refresh-token))
 
+- name: platform-automation-tasks
+  type: s3
+  source:
+    endpoint: ((s3.endpoint))
+    access_key_id: ((s3.access_key_id))
+    secret_access_key: ((s3.secret_access_key))
+    region_name: ((s3.region_name))
+    bucket: ((s3.buckets.platform_automation))
+    regexp: platform-automation-tasks-(.*).zip
+    skip_ssl_verification: true
+
+- name: platform-automation-image
+  type: s3
+  source:
+    endpoint: ((s3.endpoint))
+    access_key_id: ((s3.access_key_id))
+    secret_access_key: ((s3.secret_access_key))
+    region_name: ((s3.region_name))
+    bucket: ((s3.buckets.platform_automation))
+    regexp: platform-automation-image-(.*).tgz
+    skip_ssl_verification: true
+
+
 # configurations
 - name: configuration
   type: git
