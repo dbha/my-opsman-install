@@ -71,17 +71,6 @@ resources:
     ## care only patch version chage.
     version_pattern: "m.n.*"
 
-prepare_tasks_with_secrets: &prepare_tasks_with_secrets
-  image: platform-automation-image
-  file: platform-automation-tasks/tasks/prepare_tasks_with_secrets.yml
-  input_mapping:
-    tasks: platform-automation-tasks
-    config: configuration
-  output_mapping:
-    tasks: platform-automation-tasks
-  params:
-    CONFIG_PATHS: config/((foundation))/opsman
-    VARS_PATHS: config/((foundation))/vars
 
 
 #credhub_interpolate: &credhub_interpolate
@@ -105,6 +94,18 @@ prepare_tasks_with_secrets: &prepare_tasks_with_secrets
 #    private_key: ((plat-auto-pipes-deploy-key.private_key))
 #    branch: master
 
+prepare_tasks_with_secrets: &prepare_tasks_with_secrets
+  image: platform-automation-image
+  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+  input_mapping:
+    tasks: platform-automation-tasks
+    config: configuration
+    vars: configuration
+  params:
+    CONFIG_PATHS: config/foundations/((foundation))/download-products
+    VARS_PATHS: vars/foundations/((foundation))/vars
+  output_mapping:
+    tasks: platform-automation-tasks
 
 jobs:
   - name: upload-and-stage-product
