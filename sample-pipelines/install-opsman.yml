@@ -46,7 +46,7 @@ resources:
   type: git
   source:
     private_key: ((git.private_key))
-    uri: ((git.variable.uri))
+    uri: ((git.platform_automation_pipelines.uri))
     branch: master
 
 ## semver-config will emit  semver-config.yml to be use as a input of download-product.yml
