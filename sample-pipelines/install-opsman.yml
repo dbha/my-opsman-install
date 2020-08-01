@@ -94,17 +94,18 @@ resources:
 #    private_key: ((plat-auto-pipes-deploy-key.private_key))
 #    branch: master
 
-prepare-tasks-with-secrets: &prepare-tasks-with-secrets
+prepare_tasks_with_secrets: &prepare_tasks_with_secrets
   image: platform-automation-image
   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
   input_mapping:
     tasks: platform-automation-tasks
     config: configuration
+    vars: configuration
+  params:
+    CONFIG_PATHS: config/foundations/((foundation))/download-products
+    VARS_PATHS: vars/foundations/((foundation))/vars
   output_mapping:
     tasks: platform-automation-tasks
-  params:
-    CONFIG_PATHS: config/((foundation))/opsman config/((foundation))/products
-    VARS_PATHS: config/((foundation))/vars
 
 jobs:
   - name: upload-and-stage-product
@@ -122,8 +123,8 @@ jobs:
           - get: configuration
           - get: variable
 
-      - task: credhub-interpolate
-        <<: *credhub-interpolate
+      - task: prepare_tasks_with_secrets
+        <<: *prepare_tasks_with_secrets
 
       ## ova file.
       - task: download-product-from-s3
