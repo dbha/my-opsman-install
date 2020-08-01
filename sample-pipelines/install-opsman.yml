@@ -94,6 +94,37 @@ resources:
 #    private_key: ((plat-auto-pipes-deploy-key.private_key))
 #    branch: master
 
+credhub_interpolate: &credhub_interpolate
+  image: platform-automation-image
+  file: platform-automation-tasks/tasks/credhub_interpolate.yml
+  input_mapping:
+    files: configuration
+  params:
+    CREDHUB_SERVER: ((credhub.server))
+    CREDHUB_CA_CERT: ((credhub.ca_cert))
+    CREDHUB_CLIENT: ((credhub.client))
+    CREDHUB_SECRET: ((credhub.secret))
+    PREFIX: /concourse/main
+    INTERPOLATION_PATHS: foundations/((foundation))/opsman foundations/((foundation))/vars ((foundation))/products
+    SKIP_MISSING: false
+
+# for *.yaml, *.yml ( ie. semver-version.yaml)
+credhub_interpolate-product-version-git-opsnam: &credhub_interpolate-product-version-git-opsman
+  image: platform-automation-image
+  file: pipelines/tasks/credhub_interpolate.yml
+  input_mapping:
+    files: product-version-git-opsman
+  params:
+    CREDHUB_SERVER: ((credhub.server))
+    CREDHUB_CA_CERT: ((credhub.ca_cert))
+    CREDHUB_CLIENT: ((credhub.client))
+    CREDHUB_SECRET: ((credhub.secret))
+    PREFIX: /concourse/main
+    INTERPOLATION_PATHS: '.'
+    SKIP_MISSING: false
+  output_mapping:
+    interpolated-files: product-version-git-opsman
+
 prepare_tasks_with_secrets: &prepare_tasks_with_secrets
   image: platform-automation-image
   file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -126,9 +157,16 @@ jobs:
       - task: prepare_tasks_with_secrets
         <<: *prepare_tasks_with_secrets
 
+      - task: credhub_interpolate
+        <<: *credhub_interpolate
+
+      - task: credhub_interpolate-product-version-git-opsman
+        <<: *credhub_interpolate-product-version-git-opsman
+
       ## ova file.
       - task: download-product-from-s3
         image: platform-automation-image
+#        file: platform-automation-tasks/tasks/download-product-s3.yml
         file: platform-automation-tasks/tasks/download-product-s3.yml
         input_mapping:
           ## semver-config output semver-config.yml to be use as a input of download-product.yml
