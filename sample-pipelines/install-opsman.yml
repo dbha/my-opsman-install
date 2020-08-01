@@ -39,7 +39,7 @@ resources:
   type: git
   source:
     private_key: ((git.private_key))
-    uri: ((git.configuration.uri))
+    uri: ((git.platform_automation_pipelines.uri))
     branch: master
 
 - name: variable
@@ -54,7 +54,7 @@ resources:
   type: semver-config
   source:
     driver: git
-    uri: ((git.configuration.uri))
+    uri: ((git.platform_automation_pipelines.uri))
     branch: master
     private_key: ((git.private_key))
     config_file: ((foundation))/products/versions.yml

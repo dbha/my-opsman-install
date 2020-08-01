@@ -6,7 +6,7 @@ git:
     uri: git@github.com:dbha/my-opsman-install.git
     branch: master
   user:
-    email: user@pivotal.io
+    email: user@vmware.com
     username: "Platform Automation Bot"
   private_key: ((git_private_key.private_key))
 
