@@ -55,21 +55,21 @@ resources:
     uri: ((git.platform_automation_pipelines.uri))
     branch: master
 
-## semver-config will emit  semver-config.yml to be use as a input of download-product.yml
-- name: product-version-git
+  ## semver-config will emit semver-config.yml to be use as a input of download-product.yml
+- name: product-version-git-opsman
   type: semver-config
   source:
     driver: git
-    uri: ((git.platform_automation_pipelines.uri))
+    uri: ((git.configuration.uri))
     branch: master
     private_key: ((git.private_key))
-    config_file: foundations/((foundation))/products/versions.yml
-    ## key to identify product section in 'version'
-    config_path: products.((product-name))
+    config_file: ((foundation))/products/version.yml
+    ## key to identify product section in 'version.yml'
+    config_path: products.opsman
     ## to track version by semver-config
-    version_path: products.((product-name)).product-version
+    version_path: products.opsman.product-version
     ## care only patch version chage.
-    version_pattern: "m.n.*"
+    version_pattern: "m.n.p"
 
 
 
@@ -136,7 +136,7 @@ jobs:
           ## will find a file name 'pivnet-product-slug, product-version, pivnet-file-glob' under the folder.
           ## stemcell slug will come from meta in product file.
           ## ex) https://s3/pivnet-products/[opsmanager,2.6.3]/ops-manager-vsphere-2.6.3-build.163.ova
-          config: product-version-git-opsnam  ## will provide additional params for semver-config.yaml
+          config: product-version-git-opsman  ## will provide additional params for semver-config.yaml
           vars: interpolated-files
         params:
           CONFIG_FILE: semver-config.yaml
