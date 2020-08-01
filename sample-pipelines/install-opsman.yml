@@ -212,9 +212,9 @@ jobs:
         input_mapping:
           image: opsman-image # moving big files is slow. this file doesn't move. and will use 'downloaded-files' as it is
           state: configuration # have to provide empty state.yml file. 'interpolated-files' doesn't have state.yml file.
-          config: configuration
-#          config: interpolated-files # for products/ops-manager.yml
-#          vars: interpolated-files
+#          config: configuration
+          config: interpolated-files # for products/ops-manager.yml
+          vars: interpolated-files
         params:
           OPSMAN_CONFIG_FILE: foundations/((foundation))/products/opsman.yml
           #VARS_FILES: vars/((foundation))/vars/ops-manager-vars.yml
