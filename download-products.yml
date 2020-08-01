@@ -61,38 +61,38 @@ resources:
       regexp: "ops-manager-vsphere-*(.*).*"
       skip_ssl_verification: true
 
-  - name: stemcell-repo
-    type: s3
-    source:
-      endpoint: ((s3.endpoint))
-      access_key_id: ((s3.access_key_id))
-      bucket: ((s3.buckets.pivnet_products))
-      region_name: ((s3.region_name))
-      secret_access_key: ((s3.secret_access_key))
-      regexp: bosh-stemcell-(.*)-*.*\.tgz
-      skip_ssl_verification: true
+#  - name: stemcell-repo
+#    type: s3
+#    source:
+#      endpoint: ((s3.endpoint))
+#      access_key_id: ((s3.access_key_id))
+#      bucket: ((s3.buckets.pivnet_products))
+#      region_name: ((s3.region_name))
+#      secret_access_key: ((s3.secret_access_key))
+#      regexp: bosh-stemcell-(.*)-*.*\.tgz
+#      skip_ssl_verification: true
 
-  - name: healthwatch-product
-    type: s3
-    source:
-      endpoint: ((s3.endpoint))
-      access_key_id: ((s3.access_key_id))
-      bucket: ((s3.buckets.pivnet_products))
-      region_name: ((s3.region_name))
-      secret_access_key: ((s3.secret_access_key))
-      regexp: p-healthwatch-(.*).pivotal
-      skip_ssl_verification: true
+#  - name: healthwatch-product
+#    type: s3
+#    source:
+#      endpoint: ((s3.endpoint))
+#      access_key_id: ((s3.access_key_id))
+#      bucket: ((s3.buckets.pivnet_products))
+#      region_name: ((s3.region_name))
+#      secret_access_key: ((s3.secret_access_key))
+#      regexp: p-healthwatch-(.*).pivotal
+#      skip_ssl_verification: true
 
-  - name: pks-product
-    type: s3
-    source:
-      endpoint: ((s3.endpoint))
-      access_key_id: ((s3.access_key_id))
-      bucket: ((s3.buckets.pivnet_products))
-      region_name: ((s3.region_name))
-      secret_access_key: ((s3.secret_access_key))
-      regexp: pivotal-container-service-*(.*).pivotal
-      skip_ssl_verification: true
+#  - name: pks-product
+#    type: s3
+#    source:
+#      endpoint: ((s3.endpoint))
+#      access_key_id: ((s3.access_key_id))
+#      bucket: ((s3.buckets.pivnet_products))
+#      region_name: ((s3.region_name))
+#      secret_access_key: ((s3.secret_access_key))
+#      regexp: pivotal-container-service-*(.*).pivotal
+#      skip_ssl_verification: true
 
 prepare_tasks_with_secrets: &prepare_tasks_with_secrets
   image: platform-automation-image
