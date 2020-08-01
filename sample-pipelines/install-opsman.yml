@@ -60,10 +60,10 @@ resources:
   type: semver-config
   source:
     driver: git
-    uri: ((git.configuration.uri))
+    uri: ((git.platform_automation_pipelines.uri))
     branch: master
     private_key: ((git.private_key))
-    config_file: ((foundation))/products/version.yml
+    config_file: foundations/((foundation))/products/version.yml
     ## key to identify product section in 'version.yml'
     config_path: products.opsman
     ## to track version by semver-config
