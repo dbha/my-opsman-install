@@ -112,7 +112,7 @@ jobs:
     serial: true
     plan:
       - in_parallel:
-          - get: product-version-git
+          - get: product-version-git-opsman
             trigger: false
           - get: platform-automation-image
             params:
