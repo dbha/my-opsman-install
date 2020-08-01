@@ -139,7 +139,7 @@ jobs:
           vars: interpolated-files
         params:
           CONFIG_FILE: semver-config.yaml
-          VARS_FILES: vars/((foundation))/vars/global.yml
+#          VARS_FILES: vars/((foundation))/vars/global.yml
 
       - task: upload-product
         image: platform-automation-image
