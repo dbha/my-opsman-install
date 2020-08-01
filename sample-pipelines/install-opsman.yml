@@ -4,6 +4,12 @@ resource_types:
   source:
     repository: pivotalcf/pivnet-resource
     tag: latest-final
+
+- name: semver-config
+  type: docker-image
+  source:
+    repository: itstarting/semver-config-concourse-resource
+
 resources:
 #- name: platform-automation
 #  type: pivnet
