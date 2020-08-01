@@ -163,20 +163,30 @@ jobs:
       - task: credhub_interpolate-product-version-git-opsman
         <<: *credhub_interpolate-product-version-git-opsman
 
-      ## ova file.
-      - task: download-product-from-s3
+      - task: download-opsman-image
         image: platform-automation-image
-#        file: platform-automation-tasks/tasks/download-product-s3.yml
-        file: platform-automation-tasks/tasks/download-product-s3.yml
-        input_mapping:
-          ## semver-config output semver-config.yml to be use as a input of download-product.yml
-          ## semver-config.yaml is output of 'product-version-git-opsnam' task.
-          ## will find a folder name of '[pivnet-product-slug, product-version]' in s3 bucket.
-          ## will find a file name 'pivnet-product-slug, product-version, pivnet-file-glob' under the folder.
-          ## stemcell slug will come from meta in product file.
-          ## ex) https://s3/pivnet-products/[opsmanager,2.6.3]/ops-manager-vsphere-2.6.3-build.163.ova
-          config: product-version-git-opsman  ## will provide additional params for semver-config.yaml
-          vars: interpolated-files
+        file: platform-automation-tasks/tasks/download-product.yml
+        input_mapping: {config: configuration }
         params:
-          CONFIG_FILE: semver-config.yaml
-          # VARS_FILES: vars/((foundation))/vars/global.yml
+          CONFIG_FILE: foundations/((foundation))/download-products/opsman.yml
+      - put: opsman-product
+        params:
+          file: downloaded-product/*
+
+#      ## ova file.
+#      - task: download-product-from-s3
+#        image: platform-automation-image
+##        file: platform-automation-tasks/tasks/download-product-s3.yml
+#        file: platform-automation-tasks/tasks/download-product-s3.yml
+#        input_mapping:
+#          ## semver-config output semver-config.yml to be use as a input of download-product.yml
+#          ## semver-config.yaml is output of 'product-version-git-opsnam' task.
+#          ## will find a folder name of '[pivnet-product-slug, product-version]' in s3 bucket.
+#          ## will find a file name 'pivnet-product-slug, product-version, pivnet-file-glob' under the folder.
+#          ## stemcell slug will come from meta in product file.
+#          ## ex) https://s3/pivnet-products/[opsmanager,2.6.3]/ops-manager-vsphere-2.6.3-build.163.ova
+#          config: product-version-git-opsman  ## will provide additional params for semver-config.yaml
+#          vars: interpolated-files
+#        params:
+#          CONFIG_FILE: semver-config.yaml
+#          # VARS_FILES: vars/((foundation))/vars/global.yml
