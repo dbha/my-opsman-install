@@ -129,7 +129,7 @@ jobs:
       ## ova file.
       - task: download-product-from-s3
         image: platform-automation-image
-        file: pipelines/tasks/download-product-s3.yml
+        file: platform-automation-tasks/tasks/download-product-s3.yml
         input_mapping:
           ## semver-config output semver-config.yml to be use as a input of download-product.yml
           ## semver-config.yaml is output of 'product-version-git-opsnam' task.
