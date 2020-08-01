@@ -10,7 +10,7 @@ if [ -z ${FOUNDATION} ] || [ -z ${PRODUCT_NAME} ]  ; then
   exit 0;
 fi
 
-fly -t cp sp -p "${PRODUCT_NAME-install-opsman" \
+fly -t cp sp -p "${PRODUCT_NAME}-install-opsman" \
 -c $WORK_DIR/${PIPELINE_YAML} \
 -v foundation=${FOUNDATION} \
 -v product-name=${PRODUCT_NAME}
