@@ -148,7 +148,7 @@ jobs:
           product: downloaded-product
           env: interpolated-files
         params:
-          ENV_FILE: ((foundation))/opsman/env.yml
+          ENV_FILE: foundations/((foundation))/opsman/env.yml
 
       - task: stage-product
         image: platform-automation-image
@@ -157,4 +157,4 @@ jobs:
           product: downloaded-product
           env: configuration
         params:
-          ENV_FILE: ((foundation))/opsman/env.yml
+          ENV_FILE: foundations/((foundation))/opsman/env.yml
