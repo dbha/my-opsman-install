@@ -206,6 +206,9 @@ jobs:
 #          CONFIG_FILE: semver-config.yaml
 #          # VARS_FILES: vars/((foundation))/vars/global.yml
 
+      - task: prepare_tasks_with_secrets
+        <<: *prepare_tasks_with_secrets
+
       - task: create-vm
         image: platform-automation-image
         file: platform-automation-tasks/tasks/create-vm.yml
