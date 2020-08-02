@@ -94,7 +94,7 @@ credhub_interpolate: &credhub_interpolate
     CREDHUB_CA_CERT: ((credhub.ca_cert))
     CREDHUB_CLIENT: ((credhub.client))
     CREDHUB_SECRET: ((credhub.secret))
-    PREFIX: /concourse/((foundation))
+    PREFIX: /concourse/main
     INTERPOLATION_PATHS: foundations/((foundation))/opsman foundations/((foundation))/vars
     SKIP_MISSING: false
 
@@ -205,9 +205,6 @@ jobs:
 #        params:
 #          CONFIG_FILE: semver-config.yaml
 #          # VARS_FILES: vars/((foundation))/vars/global.yml
-
-      - task: prepare_tasks_with_secrets
-        <<: *prepare_tasks_with_secrets
 
       - task: create-vm
         image: platform-automation-image
