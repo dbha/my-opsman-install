@@ -119,6 +119,8 @@ credhub_interpolate: &credhub_interpolate
 #    INTERPOLATION_PATHS: foundations/((foundation))/pipeline-vars
     INTERPOLATION_PATHS: foundations/((foundation))/pipeline-vars foundations/((foundation))/products
     SKIP_MISSING: false
+  output_mapping:
+    interpolated-files: configuration
 
 # for *.yaml, *.yml ( ie. semver-version.yaml)
 credhub_interpolate-product-version-git-opsnam: &credhub_interpolate-product-version-git-opsman
@@ -212,7 +214,7 @@ jobs:
         input_mapping:
           image: opsman-image # moving big files is slow. this file doesn't move. and will use 'downloaded-files' as it is
           state: configuration # have to provide empty state.yml file. 'interpolated-files' doesn't have state.yml file.
-          config: configuration
+          config: interpolated-files
 #          config: interpolated-files # for products/ops-manager.yml
 #          vars: interpolated-files
         params:
