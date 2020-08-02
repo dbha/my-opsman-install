@@ -169,9 +169,6 @@ jobs:
       - task: prepare_tasks_with_secrets
         <<: *prepare_tasks_with_secrets
 
-      - task: credhub_interpolate
-        <<: *credhub_interpolate
-
       - task: credhub_interpolate-product-version-git-opsman
         <<: *credhub_interpolate-product-version-git-opsman
 
@@ -205,6 +202,9 @@ jobs:
 #        params:
 #          CONFIG_FILE: semver-config.yaml
 #          # VARS_FILES: vars/((foundation))/vars/global.yml
+
+      - task: credhub_interpolate
+        <<: *credhub_interpolate
 
       - task: create-vm
         image: platform-automation-image
