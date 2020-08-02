@@ -218,7 +218,7 @@ jobs:
 #          config: interpolated-files # for products/ops-manager.yml
 #          vars: interpolated-files
         params:
-          OPSMAN_CONFIG_FILE: config/foundations/((foundation))/products/opsman.yml
+          OPSMAN_CONFIG_FILE: foundations/((foundation))/products/opsman.yml
           #VARS_FILES: vars/((foundation))/vars/ops-manager-vars.yml
           STATE_FILE: foundations/((foundation))/state/state.yml
 
