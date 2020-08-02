@@ -248,3 +248,34 @@ jobs:
                params:
                  repository: configuration-commit
                  merge: true
+
+  - name: configure-authentication
+    serial: true
+    serial_groups: [ opsman ]
+    plan:
+      - in_parallel:
+          - get: product-version-git-opsman
+            trigger: false
+            passed: [ create-new-opsman-vm ]
+          - get: platform-automation-image
+            params:
+              unpack: true
+          - get: platform-automation-tasks
+            params:
+              unpack: true
+          - get: configuration
+          - get: variable
+
+      - task: credhub_interpolate
+        <<: *credhub_interpolate
+
+      - task: configure-authentication
+        image: platform-automation-image
+        file: platform-automation-tasks/tasks/configure-authentication.yml
+        attempts: 10
+        input_mapping:
+          env: interpolated-files
+          config: interpolated-files
+        params:
+          ENV_FILE: foundations/((foundation))/opsman/env.yml
+          AUTH_CONFIG_FILE: foundations/((foundation))/opsman/auth.yml
