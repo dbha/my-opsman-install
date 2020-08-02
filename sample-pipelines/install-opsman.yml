@@ -254,17 +254,17 @@ jobs:
     serial_groups: [ opsman ]
     plan:
       - in_parallel:
-          - get: product-version-git-opsman
-            trigger: false
-            passed: [ create-new-opsman-vm ]
-          - get: platform-automation-image
-            params:
-              unpack: true
-          - get: platform-automation-tasks
-            params:
-              unpack: true
-          - get: configuration
-          - get: variable
+        - get: product-version-git-opsman
+          trigger: false
+          passed: [ create-new-opsman-vm ]
+        - get: platform-automation-image
+          params:
+            unpack: true
+        - get: platform-automation-tasks
+          params:
+            unpack: true
+        - get: configuration
+        - get: variable
 
       - task: credhub_interpolate
         <<: *credhub_interpolate
