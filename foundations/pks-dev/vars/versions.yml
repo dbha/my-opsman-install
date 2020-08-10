@@ -3,7 +3,7 @@ products:
     product-version: "2.9.7"
     pivnet-product-slug: ops-manager
     pivnet-file-glob: "*.ova"
-    download-stemcell: "false"
+#    download-stemcell: "false"
     s3-endpoint: ((s3_endpoint))
     s3-region-name: ((s3_region))
     s3-bucket: ((s3_bucket))
@@ -16,7 +16,6 @@ products:
     product-version: "1.7.0"
     pivnet-product-slug: pivotal-container-service
     pivnet-file-glob: "pivotal-container-service*.pivotal"
-    download-stemcell: "false"
     stemcell-iaas: vsphere
     s3-endpoint: ((s3_endpoint))
     s3-region-name: ((s3_region))
