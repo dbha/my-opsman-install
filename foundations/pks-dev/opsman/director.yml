@@ -31,7 +31,7 @@ iaas-configurations:
   - additional_cloud_properties:
       enable_human_readable_name: true
     bosh_disk_path: ((iaas_configurations_0_bosh_disk_path))
-    bosh_template_folder: (iaas-iaas_configurations_0_bosh_template_folder)
+    bosh_template_folder: (iaas_iaas_configurations_0_bosh_template_folder)
     bosh_vm_folder: ((iaas_configurations_0_bosh_vm_folder))
     datacenter: ((iaas_configurations_0_datacenter))
     disk_type: ((iaas_configurations_0_disk_type)
