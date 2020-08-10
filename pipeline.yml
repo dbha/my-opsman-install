@@ -48,7 +48,7 @@ resources:
     type: s3
     source:
       access_key_id: ((s3_access_key_id))
-      bucket: ((s3_foundation_state_bucket))
+      bucket: ((s3.buckets.installation))
       region_name: ((s3_region_name))
       secret_access_key: ((s3.buckets.installation))
       versioned_file: state-((foundation)).yml
