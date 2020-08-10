@@ -1,6 +1,6 @@
 products:
   opsman:
-    product-version: "2.9.7"
+    product-version: "2.9.4"
     pivnet-product-slug: ops-manager
     pivnet-file-glob: "*.ova"
     download-stemcell: "false"
