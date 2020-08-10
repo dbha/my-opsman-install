@@ -62,18 +62,18 @@ networks-configuration:
       subnets:
         - iaas_identifier: PKS-Infrastructure
           cidr: 172.16.1.0/24
-          dns: [10.192.2.10]
+          dns: [ 10.192.2.10,10.192.2.11 ]
           gateway: 172.16.1.1
           reserved_ip_ranges: 172.16.1.1-172.16.1.50
-          availability_zone_names: [pks-az1,pks-az2,pks-az3]
+          availability_zone_names: [ pks-az1,pks-az2,pks-az3 ]
     - name: PKS-Services
       subnets:
         - iaas_identifier: PKS-Services
           cidr: 172.16.2.0/24
-          dns: [10.192.2.10]
+          dns: [ 10.192.2.10,10.192.2.11 ]
           gateway: 172.16.2.1
           reserved_ip_ranges: 172.16.1.1-172.16.1.50
-          availability_zone_names: [pks-az1,pks-az2,pks-az3]
+          availability_zone_names: [ pks-az1,pks-az2,pks-az3 ]
 properties-configuration:
   director_configuration:
     blobstore_type: local
