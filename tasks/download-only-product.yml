@@ -1,18 +1,9 @@
-
-## moving big files is slow. this file doesn't move. and will use 'downloaded-files' as it is
-
-
-
 # The inputs, outputs, params, filename, and filepath
 # of this task file are part of its semantically versioned API.
 # See our documentation for a detailed discussion of our semver API.
 # See www.semver.org for an explanation of semantic versioning.
 
-# code_snippet download-product-s3 start yaml
-
-# DEPRECATION NOTICE:
-# The download-product-s3 task will be replaced with the download-product task.
-# That task will support the SOURCE param for downloading from pivnet, s3, gcs, or azure.
+# code_snippet download-product start yaml
 ---
 platform: linux
 
@@ -27,10 +18,8 @@ inputs:
   optional: true
 
 outputs:
+- name: downloaded-product # product_slug, product_file, stemcell_file
 - name: downloaded-files
-- name: downloaded-product
-- name: downloaded-stemcell
-- name: assign-stemcell-config
 
 caches:
 - path: downloaded-files
@@ -47,6 +36,11 @@ params:
   # - The path is relative to root of the task build,
   #   so `vars` and `secrets` can be used.
 
+  SOURCE: pivnet
+  # - Required
+  # - The source location where products and stemcells are downloaded from.
+  # - Values: pivnet, s3, gcs, azure
+
 run:
-  path: pipelines/tasks/download-product-s3.sh
-# code_snippet download-product-s3 end
+  path: pipelines/tasks/download-only-product.sh
+# code_snippet download-product end

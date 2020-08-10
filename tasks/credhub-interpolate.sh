@@ -11,11 +11,11 @@ set -euo pipefail
 # https://github.com/cloudfoundry-incubator/credhub-cli/issues/68
 if [ -z "$CREDHUB_CA_CERT" ]; then
   unset CREDHUB_CA_CERT
-  export SKIP_TLS_VALIDATION="--skip-tls-validation" ##!!! added from original version
+  export SKIP_TLS_VALIDATION="--skip-tls-validation" ##!!! added from original version 
 fi
 
 
-##!!! modified from original version
+##!!! modified from original version 
 credhub login -s $CREDHUB_SERVER --client-name=$CREDHUB_CLIENT --client-secret=$CREDHUB_SECRET $SKIP_TLS_VALIDATION
 credhub find
 

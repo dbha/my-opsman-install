@@ -1,0 +1,21 @@
+---
+platform: linux
+
+
+inputs:
+  - name: state
+  - name: pipelines
+
+
+params:
+  ENV_FILE: env.yml
+  STATE_FILE: state.yml
+  GOVC_DATACENTER:
+  GOVC_INSECURE: 1
+  GOVC_URL:
+  GOVC_USERNAME:
+  GOVC_PASSWORD:
+
+run:
+  path: pipelines/tasks/poweroff-vm.sh
+

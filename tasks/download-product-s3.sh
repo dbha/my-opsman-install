@@ -34,7 +34,7 @@ stemcell_file=$(om interpolate \
 
 #cp "$product_file" downloaded-product
 #rm -rf downloaded-product
-#ln -s downloaded-files downloaded-product
+#ln -s downloaded-files downloaded-product 
 
 if [ -e "$stemcell_file" ]; then
   mv "$stemcell_file" downloaded-stemcell
