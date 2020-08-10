@@ -1,9 +1,9 @@
 git:
   platform_automation_pipelines:
-    uri: git@github.com:dbha/my-opsman-install.git
+    uri: git@github.com:dbha/platform-automation-test.git
     branch: master
   platform_automation_configs:
-    uri: git@github.com:dbha/my-opsman-install.git
+    uri: git@github.com:dbha/platform-automation-test.git
     branch: master
   user:
     email: user@vmware.com
@@ -17,7 +17,7 @@ s3:
   endpoint: https://s3.ap-northeast-1.amazonaws.com
   access_key_id: ((s3_access_key_id))
   secret_access_key: ((s3_secret_access_key))
-  region_name: "ap-northeast-1"
+  region_name: ((s3_region_name))
   buckets:
     platform_automation: dbha-automation-test
     #pivnet_products: awstest-pivnet-products
