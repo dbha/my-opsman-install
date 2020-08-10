@@ -7,7 +7,7 @@ opsman-configuration:
       password: ((iaas-configurations_0_vcenter_password))
       datastore: LUN01
       ca_cert: 
-      host:                                  # vCenter host to deploy Ops Manager in
+      host:                   # vCenter host to deploy Ops Manager in
       datacenter: Datacenter
       resource_pool: /Datacenter/host/Cluster # or /<Data Center Name>/host/<Cluster Name>
       folder: 
@@ -17,10 +17,10 @@ opsman-configuration:
     dns: 10.192.2.10
     ntp: ntp1.svc.pivotal.io                    # example: ntp.ubuntu.com
     ssh_public_key: ((opsman_ssh_key.public_key))
-    hostname: ops-manager.pksdemo.net
+    hostname: opstest.pksdemo.net
     network: "VM Network"                 # vcenter network to deploy to
     netmask: 255.255.255.0
     gateway: 172.16.1.1
-    vm_name: ops-pks-dev-vm              # default: ops-manager-vm
+    vm_name: ops-pks-dev              # default: ops-manager-vm
     memory: 8                                # default: 8 GB
     cpu: 1                                   # default: 1

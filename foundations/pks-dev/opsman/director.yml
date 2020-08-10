@@ -1,0 +1,141 @@
+az-configuration:
+  - name: pks-az1
+    iaas_configuration_name: ((iaas_configurations_0_name))
+    clusters:
+      - cluster: Cluster
+        drs_rule: SHOULD
+        host_group: null
+        resource_pool: pks-az1
+  - name: pks-az2
+    iaas_configuration_name: ((iaas_configurations_0_name))
+    clusters:
+      - cluster: Cluster
+        drs_rule: SHOULD
+        host_group: null
+        resource_pool: pks-az2
+  - name: pks-az3
+    iaas_configuration_name: ((iaas_configurations_0_name))
+    clusters:
+      - cluster: Cluster
+        drs_rule: SHOULD
+        host_group: null
+        resource_pool: pks-az3
+  - name: pks-mgmt
+    iaas_configuration_name: ((iaas_configurations_0_name))
+    clusters:
+      - cluster: Cluster
+        drs_rule: MUST
+        host_group: null
+        resource_pool: pks-mgmt
+iaas-configurations:
+  - additional_cloud_properties:
+      enable_human_readable_name: true
+    bosh_disk_path: ((iaas_configurations_0_bosh_disk_path))
+    bosh_template_folder: (iaas-iaas_configurations_0_bosh_template_folder)
+    bosh_vm_folder: ((iaas_configurations_0_bosh_vm_folder))
+    datacenter: ((iaas_configurations_0_datacenter))
+    disk_type: ((iaas_configurations_0_disk_type)
+    ephemeral_datastores_string: ((iaas_configurations_0_ephemeral_datastores_string))
+    name: default
+    nsx_address: nsxmgr-01.haas-205.pez.pivotal.io
+    nsx_ca_certificate: ((nsx_ca_cert.certificate))
+    nsx_mode: ((iaas_configurations_0_nsx_mode))
+    nsx_networking_enabled: ((iaas_configurations_0_nsx_networking_enabled)
+    nsx_password: ((nsx_password))
+    nsx_t_auth_type: ((iaas_configurations_0_nsx_t_auth_type))
+    nsx_username: ((nsx_user))
+    persistent_datastores_string: ((iaas_configurations_0_persistent_datastores_string))
+    ssl_verification_enabled: ((iaas_configurations_0_ssl_verification_enabled))
+    vcenter_host: ((iaas_configurations_0_vcenter_host))
+    vcenter_password: ((iaas_configurations_0_vcenter_password))
+    vcenter_username: ((iaas_configurations_0_vcenter_username))
+network-assignment:
+  network:
+    name: PKS-Infrastructure
+  other_availability_zones: []
+  singleton_availability_zone:
+    name: pks-az1
+networks-configuration:
+  icmp_checks_enabled: false
+  networks:
+    - name: PKS-Infrastructure
+      subnets:
+        - iaas_identifier: PKS-Infrastructure
+          cidr: 172.16.1.0/24
+          dns: [10.192.2.10,10.192.2.11]
+          gateway: 172.16.1.1
+          reserved_ip_ranges: 172.16.1.1-172.16.1.50
+          availability_zone_names: [pks-az1,pks-az2,pks-az3]
+    - name: PKS-Services
+      subnets:
+        - iaas_identifier: PKS-Services
+          cidr: 172.16.2.0/24
+          dns: [10.192.2.10,10.192.2.11]
+          gateway: 172.16.2.1
+          reserved_ip_ranges: 172.16.1.1-172.16.1.50
+          availability_zone_names: [pks-az1,pks-az2,pks-az3]
+properties-configuration:
+  director_configuration:
+    blobstore_type: local
+    bosh_director_recreate_on_next_deploy: false
+    bosh_recreate_on_next_deploy: false
+    bosh_recreate_persistent_disks_on_next_deploy: false
+    database_type: internal
+    director_worker_count: 5
+    encryption:
+      keys: []
+      providers: []
+    hm_emailer_options:
+      enabled: false
+    hm_pager_duty_options:
+      enabled: false
+    identification_tags: {}
+    job_configuration_on_tmpfs: false
+    keep_unreachable_vms: false
+    local_blobstore_options:
+      enable_signed_urls: true
+    ntp_servers_string: ntp1.svc.pivotal.io
+    post_deploy_enabled: true
+    resurrector_enabled: true
+    retry_bosh_deploys: false
+    skip_director_drain: false
+  dns_configuration:
+    excluded_recursors: []
+    handlers: []
+  security_configuration:
+    generate_vm_passwords: ((properties_configuration_security_configuration_generate_vm_passwords))
+    opsmanager_root_ca_trusted_certs: true
+    trusted_certificates: ((director_trusted_certificates.certificate))
+resource-configuration:
+  compilation:
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: automatic
+    nsx:
+      lbs: []
+      security_groups: []
+    nsxt:
+      lb:
+        server_pools: []
+      ns_groups: []
+    swap_as_percent_of_memory_size: automatic
+  director:
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: automatic
+    nsx:
+      lbs: []
+      security_groups: []
+    nsxt:
+      lb:
+        server_pools: []
+      ns_groups: []
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+vmextensions-configuration: []
+vmtypes-configuration: {}
