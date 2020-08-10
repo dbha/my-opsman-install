@@ -21,6 +21,7 @@ groups:
       - bbr-backup-director
       - delete-opsman
       - delete-installation-from-opsman
+
   - name: pks
     jobs:
       - install-and-patch-pks
@@ -28,6 +29,7 @@ groups:
       - apply-change-pks
       - bbr-backup-pks
       - test
+
   - name: opsman
     jobs:
       - install-opsman
@@ -39,6 +41,7 @@ groups:
       - export-installation
       - extract-director-config
       - bbr-backup-director
+
   - name: opsman-manual
     jobs:
       - configure-director-only
@@ -49,6 +52,7 @@ groups:
     jobs:
       - delete-opsman
       - delete-installation-from-opsman
+
 resource_types:
   - name: pivnet
     type: docker-image
@@ -59,6 +63,7 @@ resource_types:
     type: docker-image
     source:
       repository: itstarting/semver-config-concourse-resource
+
 resources:
   - name: pipeline-trigger-version-git
     type: semver
