@@ -11,7 +11,7 @@ product-properties:
   .grafana.root_url:
     value: ((properties_grafana_root_url))
   .grafana.static_ips:
-    value: [ 172.16.2.60, 172.16.2.61, 172.16.2.62, 172.16.2.63 ]
+    value: 172.16.2.60,172.16.2.61,172.16.2.62,172.16.2.63
   .properties.canary_exporter_targets:
     value:
       - address: ((properties_properties_canary_exporter_targets))
