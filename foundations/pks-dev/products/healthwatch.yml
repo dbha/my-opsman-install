@@ -1,191 +1,153 @@
-#product-name: p-healthwatch2
-#product-properties:
-#  .grafana.enable_indipro_integration:
-#    value: true
-#  .grafana.enable_login_form:
-#    value: true
-#  .grafana.pas_version:
-#    value: disabled
-#  .grafana.pks_version:
-#    value: ((grafana_pks_version))
-#  .grafana.root_url:
-#    value: ((grafana_root_url))
-#  .grafana.static_ips:
-#    value: ((grafana_static_ips))
-#  .properties.canary_exporter_targets:
-#    value:
-#      - address: ((properties_canary_exporter_targets))
-#  .properties.enable_telemetry:
-#    value: false
-#  .properties.grafana_authentication:
-#    selected_option: basic
-#    value: basic
-#  .properties.grafana_proxy:
-#    selected_option: disabled
-#    value: disabled
-#  .properties.pks_cluster_discovery:
-#    selected_option: enabled
-#    value: enabled
-#  .properties.pks_cluster_discovery.enabled.cluster_discovery_scrape_port:
-#    value: 9096
-#  .properties.pks_cluster_discovery.enabled.disabled:
-#    value: true
-#  .properties.pks_cluster_discovery.enabled.discovery_frequency_seconds:
-#    value: 60
-#  .properties.pks_cluster_discovery.enabled.enabled:
-#    value: false
-#  .properties.pks_cluster_discovery.enabled.pks_api_address:
-#    value: api.run.haas-205.pez.pivotal.io
-#  .properties.pks_cluster_discovery.enabled.pks_ca:
-#    value: ((pivotal_container_service_pks_tls.certificate))
-#  .properties.pks_cluster_discovery.enabled.pks_skip_ssl_verification:
-#    value: false
-#  .properties.pks_cluster_discovery.enabled.pks_uaa_client:
-#    value: ((pks_cluster_discovery_enabled_pks_uaa_client))
-#  .properties.remote_write_basic_auth:
-#    selected_option: disabled
-#    value: disabled
-#  .properties.scrape_configs:
-#    selected_option: disabled
-#    value: disabled
-#  .properties.smtp:
-#    selected_option: disabled
-#    value: disabled
-#  .tsdb.disk_chunk_size:
-#    value: 6144
-#  .tsdb.memory_chunk_size:
-#    value: 4096
-#  .tsdb.remote_write_batch_send_deadline:
-#    value: 5
-#  .tsdb.remote_write_max_backoff:
-#    value: 100
-#  .tsdb.remote_write_max_samples_per_send:
-#    value: 100
-#  .tsdb.remote_write_max_shards:
-#    value: 1000
-#  .tsdb.remote_write_min_backoff:
-#    value: 30
-#  .tsdb.remote_write_min_shards:
-#    value: 1
-#  .tsdb.remote_write_queue_capacity:
-#    value: 500
-#  .tsdb.remote_write_skip_tls_verify:
-#    value: false
-#  .tsdb.remote_write_timeout:
-#    value: 30
-#  .tsdb.scrape_interval:
-#    value: 15s
-#network-properties:
-#  network:
-#    name: PKS-Services
-#  other_availability_zones:
-#    - name: pks-az1
-#  singleton_availability_zone:
-#    name: pks-az1
-#resource-config:
-#  blackbox-exporter:
-#    max_in_flight: 5
-#    additional_networks: []
-#    additional_vm_extensions: []
-#    instance_type:
-#      id: automatic
-#    instances: 1
-#    nsx:
-#      lbs: []
-#      security_groups: []
-#    nsxt:
-#      lb:
-#        server_pools: []
-#      ns_groups: []
-#      vif_type: null
-#    persistent_disk:
-#      size_mb: automatic
-#    swap_as_percent_of_memory_size: automatic
-#  grafana:
-#    max_in_flight: 5
-#    additional_networks: []
-#    additional_vm_extensions: []
-#    instance_type:
-#      id: automatic
-#    instances: automatic
-#    nsx:
-#      lbs: []
-#      security_groups: []
-#    nsxt:
-#      lb:
-#        server_pools: []
-#      ns_groups: []
-#      vif_type: null
-#    persistent_disk:
-#      size_mb: automatic
-#    swap_as_percent_of_memory_size: automatic
-#  pxc:
-#    max_in_flight: 5
-#    additional_networks: []
-#    additional_vm_extensions: []
-#    instance_type:
-#      id: automatic
-#    instances: 1
-#    nsx:
-#      lbs: []
-#      security_groups: []
-#    nsxt:
-#      lb:
-#        server_pools: []
-#      ns_groups: []
-#      vif_type: null
-#    persistent_disk:
-#      size_mb: automatic
-#    swap_as_percent_of_memory_size: automatic
-#  pxc-proxy:
-#    max_in_flight: 5
-#    additional_networks: []
-#    additional_vm_extensions: []
-#    instance_type:
-#      id: automatic
-#    instances: automatic
-#    nsx:
-#      lbs: []
-#      security_groups: []
-#    nsxt:
-#      lb:
-#        server_pools: []
-#      ns_groups: []
-#      vif_type: null
-#    persistent_disk:
-#      size_mb: automatic
-#    swap_as_percent_of_memory_size: automatic
-#  tsdb:
-#    max_in_flight: 1
-#    additional_networks: []
-#    additional_vm_extensions: []
-#    instance_type:
-#      id: automatic
-#    instances: automatic
-#    nsx:
-#      lbs: []
-#      security_groups: []
-#    nsxt:
-#      lb:
-#        server_pools: []
-#      ns_groups: []
-#      vif_type: null
-#    persistent_disk:
-#      size_mb: automatic
-#    swap_as_percent_of_memory_size: automatic
-#errand-config:
-#  smoke-test:
-#    post-deploy-state: true
-#  update-admin-password:
-#    post-deploy-state: true
-#syslog-properties:
-#  address: null
-#  custom_rsyslog_configuration: null
-#  enabled: false
-#  forward_debug_logs: false
-#  permitted_peer: null
-#  port: null
-#  queue_size: null
-#  ssl_ca_certificate: null
-#  tls_enabled: false
-#  transport_protocol: tcp
+product-name: p-healthwatch2
+product-properties:
+  .grafana.enable_indipro_integration:
+    value: true
+  .grafana.enable_login_form:
+    value: true
+  .grafana.pas_version:
+    value: disabled
+  .grafana.pks_version:
+    value: ((grafana_pks_version))
+  .grafana.root_url:
+    value: ((grafana_root_url))
+  .grafana.static_ips:
+    value: ((grafana_static_ips))
+  .properties.canary_exporter_targets:
+    value:
+      - address: ((properties_canary_exporter_targets))
+  .properties.enable_telemetry:
+    value: false
+  .properties.grafana_authentication:
+    selected_option: ((grafana_authentication_selected_option))
+    value: ((grafana_authentication_value))
+  .properties.grafana_proxy:
+    selected_option: ((grafana_proxy_selected_option))
+    value: ((grafana_proxy_value))
+  .properties.pks_cluster_discovery:
+    selected_option: ((pks_cluster_discovery_selected_option))
+    value: ((pks_cluster_discovery_value))
+  .properties.pks_cluster_discovery.enabled.cluster_discovery_scrape_port:
+    value: ((pks_cluster_discovery_enabled_cluster_discovery_scrape_port))
+  .properties.pks_cluster_discovery.enabled.disabled:
+    value: ((pks_cluster_discovery_enabled_disabled))
+  .properties.pks_cluster_discovery.enabled.discovery_frequency_seconds:
+    value: ((pks_cluster_discovery_enabled_discovery_frequency_seconds))
+  .properties.pks_cluster_discovery.enabled.enabled:
+    value: ((pks_cluster_discovery_enabled_enabled))
+  .properties.pks_cluster_discovery.enabled.pks_api_address:
+    value: ((pks_cluster_discovery_enabled_pks_api_address))
+  .properties.pks_cluster_discovery.enabled.pks_ca:
+    value: ((pivotal_container_service_pks_tls.certificate))
+  .properties.pks_cluster_discovery.enabled.pks_skip_ssl_verification:
+    value: ((pks_cluster_discovery_enabled_pks_skip_ssl_verification))
+  .properties.pks_cluster_discovery.enabled.pks_uaa_client:
+    value: ((pks_cluster_discovery_enabled_pks_uaa_client))
+  .properties.remote_write_basic_auth:
+    selected_option: ((remote_write_basic_auth_selected_option))
+    value: ((remote_write_basic_auth_value))
+  .properties.scrape_configs:
+    selected_option: ((scrape_configs_selected_option))
+    value: ((scrape_configs_value))
+  .properties.smtp:
+    selected_option: ((smtp_selected_option))
+    value: ((smtp_value))
+  .tsdb.disk_chunk_size:
+    value: 6144
+  .tsdb.memory_chunk_size:
+    value: 4096
+  .tsdb.remote_write_batch_send_deadline:
+    value: 5
+  .tsdb.remote_write_max_backoff:
+    value: 100
+  .tsdb.remote_write_max_samples_per_send:
+    value: 100
+  .tsdb.remote_write_max_shards:
+    value: 1000
+  .tsdb.remote_write_min_backoff:
+    value: 30
+  .tsdb.remote_write_min_shards:
+    value: 1
+  .tsdb.remote_write_queue_capacity:
+    value: 500
+  .tsdb.remote_write_skip_tls_verify:
+    value: false
+  .tsdb.remote_write_timeout:
+    value: 30
+  .tsdb.scrape_interval:
+    value: 15s
+network-properties:
+  network:
+    name: ((network_properties_network_name))
+  other_availability_zones:
+    - name: ((network_other_availability_zones_name))
+  singleton_availability_zone:
+    name: ((network_singleton_availability_zone_name))
+
+resource-config:
+  blackbox-exporter:
+    max_in_flight: 5
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: 1
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+  grafana:
+    max_in_flight: 5
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+  pxc:
+    max_in_flight: 5
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: 1
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+  pxc-proxy:
+    max_in_flight: 5
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+  tsdb:
+    max_in_flight: 1
+    additional_networks: []
+    additional_vm_extensions: []
+    instance_type:
+      id: automatic
+    instances: automatic
+    persistent_disk:
+      size_mb: automatic
+    swap_as_percent_of_memory_size: automatic
+
+errand-config:
+  smoke-test:
+    post-deploy-state: true
+  update-admin-password:
+    post-deploy-state: true
+syslog-properties:
+  address: null
+  custom_rsyslog_configuration: null
+  enabled: false
+  forward_debug_logs: false
+  permitted_peer: null
+  port: null
+  queue_size: null
+  ssl_ca_certificate: null
+  tls_enabled: false
+  transport_protocol: tcp
