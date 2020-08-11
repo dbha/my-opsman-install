@@ -1,4 +1,5 @@
 properties_cloud_provider_selected_option: vsphere
+properties_cloud_provider_selected_option_value: vSphere
 cloud_provider_vsphere_vcenter_dc: Datacenter
 cloud_provider_vsphere_vcenter_ds: LUN01
 cloud_provider_vsphere_vcenter_ip: vcsa-01.haas-205.pez.pivotal.io
