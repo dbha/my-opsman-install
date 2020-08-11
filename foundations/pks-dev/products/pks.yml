@@ -5,7 +5,7 @@ product-properties:
       cert_pem: ((pivotal_container_service_pks_tls.certificate))
       private_key_pem: ((pivotal_container_service_pks_tls.private_key))
   .properties.cloud_provider:
-    selected_option: vsphere
+#    selected_option: vsphere
     value: vsphere
   .properties.cloud_provider.vsphere.vcenter_dc:
     value: ((cloud_provider_vsphere_vcenter_dc))
