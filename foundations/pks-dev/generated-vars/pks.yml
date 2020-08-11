@@ -29,6 +29,7 @@ pivotal_container_service_instance: automatic
 pivotal_container_service_persistent_disk_size: automatic
 pivotal_container_service_swap_as_percent_of_memory_size: 0
 pks_db_instance_type: automatic
+pks_db_instance_type_instance: automatic
 pks_db_max_in_flight: 1
 pks_db_persistent_disk_size: automatic
 pks_db_swap_as_percent_of_memory_size: 0

@@ -232,7 +232,7 @@ resource-config:
     instance_type:
       id: ((pks_db_instance_type))
     max_in_flight: ((pks_db_max_in_flight))
-    instances: instances
+    instances: ((pks_db_instance_type_instance))
     persistent_disk:
       size_mb: ((pks_db_persistent_disk_size))
     swap_as_percent_of_memory_size: ((pks_db_swap_as_percent_of_memory_size)
