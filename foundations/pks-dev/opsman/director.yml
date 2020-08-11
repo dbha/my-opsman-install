@@ -72,7 +72,7 @@ networks-configuration:
           cidr: 172.16.2.0/24
           dns: 10.192.2.10
           gateway: 172.16.2.1
-          reserved_ip_ranges: 172.16.1.1-172.16.1.50
+          reserved_ip_ranges: 172.16.2.1-172.16.2.10
           availability_zone_names: [ pks-az1,pks-az2,pks-az3 ]
 properties-configuration:
   director_configuration:
