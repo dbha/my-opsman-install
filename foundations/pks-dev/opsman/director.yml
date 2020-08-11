@@ -38,7 +38,7 @@ iaas-configurations:
     ephemeral_datastores_string: ((iaas_configurations_0_ephemeral_datastores_string))
     name: default
     nsx_address: nsxmgr-01.haas-205.pez.pivotal.io
-    nsx_ca_certificate: ((nsx_ca_cert.certificate))
+    nsx_api_ca_certificate: ((nsx_api_ca_cert.certificate))
     nsx_mode: ((iaas_configurations_0_nsx_mode))
     nsx_networking_enabled: ((iaas_configurations_0_nsx_networking_enabled))
     nsx_password: ((nsx_password))

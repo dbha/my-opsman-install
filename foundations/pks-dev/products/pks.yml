@@ -49,7 +49,7 @@ product-properties:
   .properties.network_selector.nsx.nodes-ip-block-id:
     value: ((network_selector_nsx_nodes_ip_block_id))
   .properties.network_selector.nsx.nsx-t-ca-cert:
-    value: ((nsx_ca_cert.certificate))
+    value: ((nsx_api_ca_cert.certificate))
   .properties.network_selector.nsx.nsx-t-host:
     value: nsxmgr-01.haas-205.pez.pivotal.io
   .properties.network_selector.nsx.nsx-t-insecure:

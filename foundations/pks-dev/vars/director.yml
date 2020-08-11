@@ -14,7 +14,7 @@ properties_configuration_security_configuration_generate_vm_passwords: 'true'
 trusted_certificates: ""
 iaas_configurations_0_name: 'default'
 iaas_configurations_0_nsx_address:
-#iaas-configurations_0_nsx_ca_certificate: -> credhub => ((nsx_api_ca_cert.certificate))
+#iaas-configurations_0_nsx_api_ca_certificate: -> credhub => ((nsx_api_ca_cert.certificate))
 iaas_configurations_0_nsx_mode: 'nsx-t'
 iaas_configurations_0_nsx_t_auth_type: 'local_user'
 #iaas-configurations_0_nsx_username: -> credhub
