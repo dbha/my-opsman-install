@@ -1085,6 +1085,7 @@ jobs:
               CONFIG_FILE: foundations/((foundation))/products/pks.yml
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               VARS_FILES: config/foundations/((foundation))/generated-vars/pks.yml config/foundations/((foundation))/vars/pks.yml
+
   - name: apply-change-pks
     serial: true
     serial_groups:
