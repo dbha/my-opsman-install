@@ -27,7 +27,7 @@ products:
 
   healthwatch2:
     product-version: "2.0.3"
-    pivnet-product-slug: p-healthwatch2
+    pivnet-product-slug: p-healthwatch
     pivnet-file-glob: "p-healthwatch*.pivotal"
     stemcell-iaas: vsphere
     s3-endpoint: ((s3_endpoint))
