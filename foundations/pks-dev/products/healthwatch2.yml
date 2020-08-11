@@ -10,8 +10,8 @@ product-properties:
     value: ((properties_grafana_pks_version))
   .grafana.root_url:
     value: ((properties_grafana_root_url))
-  .grafana.static_ips:
-    value: []
+#  .grafana.static_ips:
+#    value: []
   .properties.canary_exporter_targets:
     value:
       - address: ((properties_properties_canary_exporter_targets))
