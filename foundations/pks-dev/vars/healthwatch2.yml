@@ -20,7 +20,7 @@ properties_remote_write_basic_auth_value: disabled
 properties_scrape_configs_selected_option: disabled
 properties_scrape_configs_value: disabled
 properties_smtp_selected_option: disabled
-properties_mtp_value: disabled
+properties_smtp_value: disabled
 network_properties_network_name: PKS-Services
 network_other_availability_zones_name: pks-az1
 network_singleton_availability_zone_name: pks-az1

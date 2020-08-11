@@ -7,50 +7,50 @@ product-properties:
   .grafana.pas_version:
     value: disabled
   .grafana.pks_version:
-    value: ((grafana_pks_version))
+    value: ((properties_grafana_pks_version))
   .grafana.root_url:
-    value: ((grafana_root_url))
+    value: ((properties_grafana_root_url))
   .grafana.static_ips:
-    value: ((grafana_static_ips))
+    value: ((properties_grafana_static_ips))
   .properties.canary_exporter_targets:
     value:
-      - address: ((properties_canary_exporter_targets))
+      - address: ((properties_properties_canary_exporter_targets))
   .properties.enable_telemetry:
     value: false
   .properties.grafana_authentication:
-    selected_option: ((grafana_authentication_selected_option))
-    value: ((grafana_authentication_value))
+    selected_option: ((properties_grafana_authentication_selected_option))
+    value: ((properties_grafana_authentication_value))
   .properties.grafana_proxy:
-    selected_option: ((grafana_proxy_selected_option))
-    value: ((grafana_proxy_value))
+    selected_option: ((properties_grafana_proxy_selected_option))
+    value: ((properties_grafana_proxy_value))
   .properties.pks_cluster_discovery:
-    selected_option: ((pks_cluster_discovery_selected_option))
-    value: ((pks_cluster_discovery_value))
+    selected_option: ((properties_pks_cluster_discovery_selected_option))
+    value: ((properties_pks_cluster_discovery_value))
   .properties.pks_cluster_discovery.enabled.cluster_discovery_scrape_port:
-    value: ((pks_cluster_discovery_enabled_cluster_discovery_scrape_port))
+    value: ((properties_pks_cluster_discovery_enabled_cluster_discovery_scrape_port))
   .properties.pks_cluster_discovery.enabled.disabled:
-    value: ((pks_cluster_discovery_enabled_disabled))
+    value: ((properties_pks_cluster_discovery_enabled_disabled))
   .properties.pks_cluster_discovery.enabled.discovery_frequency_seconds:
-    value: ((pks_cluster_discovery_enabled_discovery_frequency_seconds))
+    value: ((properties_pks_cluster_discovery_enabled_discovery_frequency_seconds))
   .properties.pks_cluster_discovery.enabled.enabled:
-    value: ((pks_cluster_discovery_enabled_enabled))
+    value: ((properties_pks_cluster_discovery_enabled_enabled))
   .properties.pks_cluster_discovery.enabled.pks_api_address:
-    value: ((pks_cluster_discovery_enabled_pks_api_address))
+    value: ((properties_pks_cluster_discovery_enabled_pks_api_address))
   .properties.pks_cluster_discovery.enabled.pks_ca:
-    value: ((pivotal_container_service_pks_tls.certificate))
+    value: ((properties_pivotal_container_service_pks_tls.certificate))
   .properties.pks_cluster_discovery.enabled.pks_skip_ssl_verification:
-    value: ((pks_cluster_discovery_enabled_pks_skip_ssl_verification))
+    value: ((properties_pks_cluster_discovery_enabled_pks_skip_ssl_verification))
   .properties.pks_cluster_discovery.enabled.pks_uaa_client:
-    value: ((pks_cluster_discovery_enabled_pks_uaa_client))
+    value: ((properties_pks_cluster_discovery_enabled_pks_uaa_client))
   .properties.remote_write_basic_auth:
     selected_option: ((remote_write_basic_auth_selected_option))
-    value: ((remote_write_basic_auth_value))
+    value: ((properties_remote_write_basic_auth_value))
   .properties.scrape_configs:
-    selected_option: ((scrape_configs_selected_option))
-    value: ((scrape_configs_value))
+    selected_option: ((properties_scrape_configs_selected_option))
+    value: ((properties_scrape_configs_value))
   .properties.smtp:
-    selected_option: ((smtp_selected_option))
-    value: ((smtp_value))
+    selected_option: ((properties_smtp_selected_option))
+    value: ((properties_smtp_value))
   .tsdb.disk_chunk_size:
     value: 6144
   .tsdb.memory_chunk_size:
