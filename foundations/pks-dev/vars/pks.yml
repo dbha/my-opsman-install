@@ -1,0 +1,44 @@
+properties_cloud_provider_selected_option: vsphere
+cloud_provider_vsphere_vcenter_dc: Datacenter
+cloud_provider_vsphere_vcenter_ds: LUN01
+cloud_provider_vsphere_vcenter_ip: vcsa-01.haas-205.pez.pivotal.io
+cloud_provider_vsphere_vcenter_vms: pks_dev_vms
+log_sink_resources_deploy: true
+metric_sink_resources_deploy: true
+network_selector_selected_option: nsx
+network_selector_nsx_cloud_config_dns: 10.192.2.10
+network_selector_nsx_floating_ip_pool_ids: 0b37d3f5-274b-41fa-9ad8-e5d9d39969b9
+network_selector_nsx_ip_block_id: aca4848d-ac3c-439f-8b5d-cc708e828ba7
+network_selector_nsx_nodes_ip_block_id: 2e713733-0020-46ac-a2ef-c8b364fb8281
+network_selector_nsx_t0_router_id: 24685966-1e88-4d59-b9c6-318328ef912b
+network_selector_nsx_vcenter_cluster: Cluster
+pks_api_hostname: api.pksdemo.net
+# plan1_selector_active_addons_spec: credhub
+
+######################################################
+#network_name:
+#network_selector_nsx_cloud-config-dns:
+#network_selector_nsx_floating-ip-pool-ids:
+#network_selector_nsx_ip-block-id:
+#network_selector_nsx_lb_size_large_supported:
+#network_selector_nsx_lb_size_medium_supported:
+#network_selector_nsx_nat_mode:
+#network_selector_nsx_ncp-ha-heartbeat-period:
+#network_selector_nsx_ncp-ha-master-timeout:
+#network_selector_nsx_ncp-ha-update-timeout:
+#network_selector_nsx_network_automation:
+#network_selector_nsx_nodes-ip-block-id:
+#network_selector_nsx_nsx-t-host:
+#network_selector_nsx_nsx-t-insecure:
+#network_selector_nsx_nsx-t-superuser-certificate_certificate:
+#network_selector_nsx_nsx-t-superuser-certificate_privatekey:
+#network_selector_nsx_service_cluster_cidr:
+#network_selector_nsx_t0-router-id:
+#network_selector_nsx_vcenter_cluster:
+#pivotal-container-service_pks_tls_certificate:
+#pivotal-container-service_pks_tls_privatekey:
+#pks_api_hostname:
+#plan1_selector_active_master_az_placement:
+#plan1_selector_active_worker_az_placement:
+#service_network_name:
+#singleton_availability_zone:
