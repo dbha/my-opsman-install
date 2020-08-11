@@ -26,9 +26,9 @@ products:
     pivnet-api-token: ((pivnet_token))
 
   healthwatch2:
-    product-version: "2.0.3-build.9"
+    product-version: "2.0.2-build.83"
     pivnet-product-slug: p-healthwatch
-    pivnet-file-glob: "healthwatch-2.0.3-*.pivotal"
+    pivnet-file-glob: "healthwatch-2.0.2-*.pivotal"
     stemcell-iaas: vsphere
     s3-endpoint: ((s3_endpoint))
     s3-region-name: ((s3_region))
