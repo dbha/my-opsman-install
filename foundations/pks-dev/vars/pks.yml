@@ -32,6 +32,10 @@ pks_db_max_in_flight: 1
 pks_db_persistent_disk_size: automatic
 pks_db_swap_as_percent_of_memory_size: automatic
 
+plan1_selector_active_az_placement_az1: pks-az1
+plan1_selector_active_az_placement_az2: pks-az2
+plan1_selector_active_az_placement_az3: pks-az3
+
 #pivotal_container_service_instance_type
 #pivotal_container_service_max_in_flight
 #pivotal_container_service_persistent_disk_size
