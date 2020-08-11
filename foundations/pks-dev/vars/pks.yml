@@ -13,6 +13,14 @@ network_selector_nsx_nodes_ip_block_id: 2e713733-0020-46ac-a2ef-c8b364fb8281
 network_selector_nsx_t0_router_id: 24685966-1e88-4d59-b9c6-318328ef912b
 network_selector_nsx_vcenter_cluster: Cluster
 pks_api_hostname: api.pksdemo.net
+
+#pivotal_container_service_instance_type
+#pivotal_container_service_max_in_flight
+#pivotal_container_service_persistent_disk_size
+#pks_db_instance_type
+#pks_db_max_in_flight
+#pks_db_persistent_disk_size
+
 # plan1_selector_active_addons_spec: credhub
 
 ######################################################

@@ -13,6 +13,10 @@ product-properties:
     value: ((cloud_provider_vsphere_vcenter_ds))
   .properties.cloud_provider.vsphere.vcenter_ip:
     value: ((cloud_provider_vsphere_vcenter_ip))
+  .properties.cloud_provider.vsphere.vcenter_master_creds:
+    value:
+      identity: ((iaas_configurations_0_vcenter_username))
+      password: ((iaas_configurations_0_vcenter_password))
   .properties.cloud_provider.vsphere.vcenter_vms:
     value: ((cloud_provider_vsphere_vcenter_vms))
   .properties.log_sink_resources_deploy:
@@ -50,6 +54,10 @@ product-properties:
     value: nsxmgr-01.haas-205.pez.pivotal.io
   .properties.network_selector.nsx.nsx-t-insecure:
     value: false
+  .properties.network_selector.nsx.nsx-t-superuser-certificate:
+    value:
+      cert_pem: ((nsx_api_ca_cert.certificate))
+      private_key_pem: ((nsx_api_ca_cert.private_key))
   .properties.network_selector.nsx.service_cluster_cidr:
     value: 10.100.200.0/24
   .properties.network_selector.nsx.t0-router-id:
@@ -249,3 +257,17 @@ errand-config:
     post-deploy-state: false
   wavefront-alert-deletion:
     pre-delete-state: false
+
+#resource-config:
+#  pivotal-container-service:
+#    instance_type:
+#      id: ((pivotal_container_service_instance_type))
+#    max_in_flight: ((pivotal_container_service_max_in_flight))
+#    persistent_disk:
+#      size_mb: ((pivotal_container_service_persistent_disk_size))
+#  pks-db:
+#    instance_type:
+#      id: ((pks_db_instance_type))
+#    max_in_flight: ((pks_db_max_in_flight))
+#    persistent_disk:
+#      size_mb: ((pks_db_persistent_disk_size))
