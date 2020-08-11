@@ -235,7 +235,7 @@ resource-config:
     instances: ((pks_db_instance_type_instance))
     persistent_disk:
       size_mb: ((pks_db_persistent_disk_size))
-    swap_as_percent_of_memory_size: ((pks_db_swap_as_percent_of_memory_size)
+    swap_as_percent_of_memory_size: ((pks_db_swap_as_percent_of_memory_size))
 
 errand-config:
   clone-db:
