@@ -184,7 +184,7 @@ resources:
       config_file: foundations/((foundation))/versions.yml
       config_path: products.healthwatch2
       version_path: products.healthwatch2.product-version
-      version_pattern: m.n.p
+      version_pattern: m.n.*
 
   - name: bbr-pks-backup-bucket
     type: s3
