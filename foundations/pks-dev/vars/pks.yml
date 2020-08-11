@@ -14,6 +14,24 @@ network_selector_nsx_t0_router_id: 24685966-1e88-4d59-b9c6-318328ef912b
 network_selector_nsx_vcenter_cluster: Cluster
 pks_api_hostname: api.pksdemo.net
 
+clone_db_post_deploy_state: true
+delete_all_clusters_pre_delete_state: true
+pks_nsx_t_precheck_post_deploy_state: true
+smoke_tests_post_deploy_state: false
+upgrade_all_service_instances_post_deploy_state: true
+wavefront_alert_creation_post_deploy_state: false
+wavefront_alert_deletion_pre_delete_state: false
+
+pivotal_container_service_instance_type: automatic
+pivotal_container_service_max_in_flight: 1
+pivotal_container_service_instance: automatic
+pivotal_container_service_persistent_disk_size: automatic
+pivotal_container_service_swap_as_percent_of_memory_size: automatic
+pks_db_instance_type: automatic
+pks_db_max_in_flight: 1
+pks_db_persistent_disk_size: automatic
+pks_db_swap_as_percent_of_memory_size: automatic
+
 #pivotal_container_service_instance_type
 #pivotal_container_service_max_in_flight
 #pivotal_container_service_persistent_disk_size

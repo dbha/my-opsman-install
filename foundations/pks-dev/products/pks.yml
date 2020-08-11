@@ -4,21 +4,6 @@ product-properties:
     value:
       cert_pem: ((pivotal_container_service_pks_tls.certificate))
       private_key_pem: ((pivotal_container_service_pks_tls.private_key))
-  .properties.cloud_provider:
-    selected_option: ((properties_cloud_provider_selected_option))
-    value: ((properties_cloud_provider_selected_option))
-  .properties.cloud_provider.vsphere.vcenter_dc:
-    value: ((cloud_provider_vsphere_vcenter_dc))
-  .properties.cloud_provider.vsphere.vcenter_ds:
-    value: ((cloud_provider_vsphere_vcenter_ds))
-  .properties.cloud_provider.vsphere.vcenter_ip:
-    value: ((cloud_provider_vsphere_vcenter_ip))
-  .properties.cloud_provider.vsphere.vcenter_master_creds:
-    value:
-      identity: ((iaas_configurations_0_vcenter_username))
-      password: ((iaas_configurations_0_vcenter_password))
-  .properties.cloud_provider.vsphere.vcenter_vms:
-    value: ((cloud_provider_vsphere_vcenter_vms))
   .properties.log_sink_resources_deploy:
     value: ((log_sink_resources_deploy))
   .properties.metric_sink_resources_deploy:
@@ -200,74 +185,43 @@ product-properties:
 network-properties:
   network:
     name: PKS-Services
-  other_availability_zones: [ {"name=>pks-az1"}, {"name=>pks-az2"}, {"name=>pks-az3"} ]
+  other_availability_zones: [ pks-az2 ]
   service_network:
     name: PKS-Services
   singleton_availability_zone:
     name: pks-az1
+
 resource-config:
   pivotal-container-service:
-    max_in_flight: 1
-    additional_networks: []
-    additional_vm_extensions: []
     instance_type:
-      id: automatic
-    instances: automatic
-    nsx:
-      lbs: []
-      security_groups: []
-    nsxt:
-      lb:
-        server_pools: []
-      ns_groups: []
-      vif_type: null
+      id: ((pivotal_container_service_instance_type))
+    max_in_flight: ((pivotal_container_service_max_in_flight))
+    instances: ((pivotal_container_service_instance))
     persistent_disk:
-      size_mb: automatic
-    swap_as_percent_of_memory_size: automatic
+      size_mb: ((pivotal_container_service_persistent_disk_size))
+    swap_as_percent_of_memory_size:
   pks-db:
-    max_in_flight: 1
-    additional_networks: []
-    additional_vm_extensions: []
     instance_type:
-      id: automatic
-    instances: automatic
-    nsx:
-      lbs: []
-      security_groups: []
-    nsxt:
-      lb:
-        server_pools: []
-      ns_groups: []
-      vif_type: null
+      id: ((pks_db_instance_type))
+    max_in_flight: ((pks_db_max_in_flight))
+    instances: instances
     persistent_disk:
-      size_mb: automatic
-    swap_as_percent_of_memory_size: automatic
+      size_mb: ((pks_db_persistent_disk_size))
+    swap_as_percent_of_memory_size: ((pks_db_swap_as_percent_of_memory_size)
+
 errand-config:
   clone-db:
-    post-deploy-state: true
+    post-deploy-state: ((clone_db_post_deploy_state))
   delete-all-clusters:
-    pre-delete-state: true
+    pre-delete-state: ((delete_all_clusters_pre_delete_state))
   pks-nsx-t-precheck:
-    post-deploy-state: true
+    post-deploy-state: ((pks_nsx_t_precheck_post_deploy_state))
   smoke-tests:
-    post-deploy-state: false
+    post-deploy-state: ((smoke_tests_post_deploy_state))
   upgrade-all-service-instances:
-    post-deploy-state: true
+    post-deploy-state: ((upgrade_all_service_instances_post_deploy_state))
   wavefront-alert-creation:
-    post-deploy-state: false
+    post-deploy-state: ((wavefront_alert_creation_post_deploy_state))
   wavefront-alert-deletion:
-    pre-delete-state: false
+    pre-delete-state: ((wavefront_alert_deletion_pre_delete_state))
 
-#resource-config:
-#  pivotal-container-service:
-#    instance_type:
-#      id: ((pivotal_container_service_instance_type))
-#    max_in_flight: ((pivotal_container_service_max_in_flight))
-#    persistent_disk:
-#      size_mb: ((pivotal_container_service_persistent_disk_size))
-#  pks-db:
-#    instance_type:
-#      id: ((pks_db_instance_type))
-#    max_in_flight: ((pks_db_max_in_flight))
-#    persistent_disk:
-#      size_mb: ((pks_db_persistent_disk_size))
