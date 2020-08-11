@@ -27,11 +27,11 @@ pivotal_container_service_instance_type: automatic
 pivotal_container_service_max_in_flight: 1
 pivotal_container_service_instance: automatic
 pivotal_container_service_persistent_disk_size: automatic
-pivotal_container_service_swap_as_percent_of_memory_size: automatic
+pivotal_container_service_swap_as_percent_of_memory_size: 0
 pks_db_instance_type: automatic
 pks_db_max_in_flight: 1
 pks_db_persistent_disk_size: automatic
-pks_db_swap_as_percent_of_memory_size: automatic
+pks_db_swap_as_percent_of_memory_size: 0
 
 plan1_selector_active_az_placement_az1: pks-az1
 plan1_selector_active_az_placement_az2: pks-az2
