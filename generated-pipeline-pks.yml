@@ -201,18 +201,18 @@ resources:
       regexp: ((foundation))-pivotal-container-service-backup_(.*).tgz
       skip_ssl_verification: true
 
-prepare_tasks_with_secrets: &prepare_tasks_with_secrets
-  image: platform-automation-image
-  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  input_mapping:
-    tasks: platform-automation-tasks
-    config: configuration
-    vars: configuration
-  params:
-    CONFIG_PATHS: config/foundations/((foundation))
-    VARS_PATHS: vars/foundations/((foundation))
-  output_mapping:
-    tasks: platform-automation-tasks
+#prepare_tasks_with_secrets: &prepare_tasks_with_secrets
+#  image: platform-automation-image
+#  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#  input_mapping:
+#    tasks: platform-automation-tasks
+#    config: configuration
+#    vars: configuration
+#  params:
+#    CONFIG_PATHS: config/foundations/((foundation))
+#    VARS_PATHS: vars/foundations/((foundation))
+#  output_mapping:
+#    tasks: platform-automation-tasks
 
 jobs:
   - name: install-opsman
@@ -236,22 +236,30 @@ jobs:
           - get: opsman-version-git
           - get: opsman_vm_state
       - do:
-#          - task: prepare_tasks_with_secrets
-#            <<: *prepare_tasks_with_secrets
-
-         - task: prepare_tasks_with_product_version
-           image: platform-automation-image
-           file: pipelines/tasks/prepare-tasks-with-secrets.yml
-           input_mapping:
-             tasks: platform-automation-tasks
-             config: opsman-version-git
-             vars: configuration
-           params:
-             CONFIG_PATHS: config
-             VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-           output_mapping:
-             tasks: platform-automation-tasks
-
+          - task: prepare_tasks_with_secrets
+            image: platform-automation-image
+            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+            input_mapping:
+              tasks: platform-automation-tasks
+              config: configuration
+              vars: configuration
+            params:
+              CONFIG_PATHS: config/foundations/((foundation))/opsman
+              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+            output_mapping:
+              tasks: platform-automation-tasks
+          - task: prepare_tasks_with_product_version
+            image: platform-automation-image
+            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+            input_mapping:
+              tasks: platform-automation-tasks
+              config: opsman-version-git
+              vars: configuration
+            params:
+              CONFIG_PATHS: config
+              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+            output_mapping:
+              tasks: platform-automation-tasks
           - task: prepare_custom_tasks_with_secrets
             image: platform-automation-image
             file: pipelines/tasks/prepare-tasks-with-secrets.yml
@@ -278,7 +286,6 @@ jobs:
               TASKS_PATH: tasks/tasks
             output_mapping:
               tasks: pipelines
-
           - task: echo_files
             config:
               platform: linux
@@ -304,7 +311,6 @@ jobs:
             params:
               OPSMAN_CONFIG_FILE: foundations/((foundation))/opsman/opsman.yml
               STATE_FILE: foundations/((foundation))/state/state.yml
-
           - task: download-product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
@@ -312,10 +318,8 @@ jobs:
               config: opsman-version-git
               vars: configuration
             params:
-              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
-              VARS_FILES: vars/foundations/((foundation))/versions
-              SOURCE: s3
-
+              CONFIG_FILE: semver-config.yaml
+              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 
           - task: create-vm
             image: platform-automation-image
