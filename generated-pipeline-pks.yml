@@ -312,8 +312,9 @@ jobs:
               config: opsman-version-git
               vars: configuration
             params:
-              CONFIG_FILE: semver-config.yaml
+              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+
           - task: create-vm
             image: platform-automation-image
             file: platform-automation-tasks/tasks/create-vm.yml
