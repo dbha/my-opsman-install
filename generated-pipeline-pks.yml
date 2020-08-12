@@ -193,37 +193,37 @@ resources:
       version_path: products.pks.product-version
       version_pattern: m.n.p
 
-#  - name: healthwatch2-version-git2
-#    type: semver-config
+  - name: healthwatch2-version-git
+    type: semver-config
+    source:
+      driver: git
+      uri: ((git.platform_automation_configs.uri))
+      branch: ((git.platform_automation_configs.branch))
+      private_key: ((git.private_key))
+      config_file: foundations/((foundation))/versions.yml
+      config_path: products.healthwatch2
+      version_path: products.healthwatch2.product-version
+      version_pattern: m.n.*
+
+#  - name: healthwatch2-version-git
+#    type: git
 #    source:
-#      driver: git
+#      private_key: ((git.private_key))
 #      uri: ((git.platform_automation_configs.uri))
 #      branch: ((git.platform_automation_configs.branch))
+#      skip_ssl_verification: true
+#      paths:
+#        - foundations/((foundation))/versions/healthwatch.yml
+#
+#  - name: pks-version-git
+#    type: git
+#    source:
 #      private_key: ((git.private_key))
-#      config_file: foundations/((foundation))/versions.yml
-#      config_path: products.healthwatch2
-#      version_path: products.healthwatch2.product-version
-#      version_pattern: m.n.*
-
-  - name: healthwatch2-version-git
-    type: git
-    source:
-      private_key: ((git.private_key))
-      uri: ((git.platform_automation_configs.uri))
-      branch: ((git.platform_automation_configs.branch))
-      skip_ssl_verification: true
-      paths:
-        - foundations/((foundation))/versions/healthwatch.yml
-
-  - name: pks-version-git
-    type: git
-    source:
-      private_key: ((git.private_key))
-      uri: ((git.platform_automation_configs.uri))
-      branch: ((git.platform_automation_configs.branch))
-      skip_ssl_verification: true
-      paths:
-        - foundations/((foundation))/versions/pks.yml
+#      uri: ((git.platform_automation_configs.uri))
+#      branch: ((git.platform_automation_configs.branch))
+#      skip_ssl_verification: true
+#      paths:
+#        - foundations/((foundation))/versions/pks.yml
 
 
 
