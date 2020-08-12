@@ -489,7 +489,7 @@ jobs:
           config: configuration
           vars: configuration
         params:
-          CONFIG_FILE: foundations/((foundation))/config/download-healthwatch2.yml
+          CONFIG_FILE: foundations/((foundation))/config/download-healthwatch.yml
           VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
           SOURCE: s3
         output_mapping:
@@ -603,7 +603,7 @@ jobs:
           env: configuration
           vars: configuration
         params:
-          CONFIG_FILE: foundations/((foundation))/config/healthwatch2.yml
+          CONFIG_FILE: foundations/((foundation))/config/healthwatch.yml
           ENV_FILE: foundations/config/env.yml
           VARS_FILES: |
             vars/foundations/vars/director.yml

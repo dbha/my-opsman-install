@@ -82,6 +82,7 @@ resources:
       branch: ((git.platform_automation_configs.branch))
       file: foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
       private_key: ((git.private_key))
+
   - name: platform-automation-tasks
     type: s3
     source:
@@ -92,6 +93,7 @@ resources:
       secret_access_key: ((s3.secret_access_key))
       regexp: platform-automation-tasks-(.*).zip
       skip_ssl_verification: true
+
   - name: platform-automation-image
     type: s3
     source:
@@ -102,6 +104,7 @@ resources:
       secret_access_key: ((s3.secret_access_key))
       regexp: platform-automation-image-(.*).tgz
       skip_ssl_verification: true
+
   - name: pipelines
     type: git
     source:
@@ -109,6 +112,7 @@ resources:
       uri: ((git.platform_automation_pipelines.uri))
       branch: ((git.platform_automation_pipelines.branch))
       skip_ssl_verification: true
+
   - name: configuration
     type: git
     source:
@@ -116,6 +120,7 @@ resources:
       uri: ((git.platform_automation_configs.uri))
       branch: ((git.platform_automation_configs.branch))
       skip_ssl_verification: true
+
   - name: installation
     type: s3
     source:
@@ -126,6 +131,7 @@ resources:
       bucket: ((s3.buckets.installation))
       regexp: ((foundation))-installation-(.*).zip
       skip_ssl_verification: true
+
   - name: opsman_vm_state
     type: git
     source:
@@ -135,7 +141,8 @@ resources:
       skip_ssl_verification: true
       paths:
         - foundations/((foundation))/state/state.yml
-  - name: opsman-version-git
+
+  - name: opsman-version-git2
     type: semver-config
     source:
       driver: git
@@ -146,6 +153,17 @@ resources:
       config_path: products.opsman
       version_path: products.opsman.product-version
       version_pattern: m.n.p
+
+  - name: opsman-version-git
+    type: git
+    source:
+      private_key: ((git.private_key))
+      uri: ((git.platform_automation_configs.uri))
+      branch: ((git.platform_automation_configs.branch))
+      skip_ssl_verification: true
+      paths:
+        - foundations/((foundation))/versions/opsman.yml
+
   - name: bbr-release-pivnet
     type: pivnet
     source:
