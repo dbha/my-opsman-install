@@ -370,6 +370,7 @@ jobs:
               config: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
+              VARS_FILES: config/foundations/((foundation))/vars/opsman.yml
 
           - task: create-vm
             image: platform-automation-image
