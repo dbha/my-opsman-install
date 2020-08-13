@@ -366,11 +366,12 @@ jobs:
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
             input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
+              config: opsman-version-git
+              vars: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
-              VARS_FILES: config/foundations/((foundation))/vars/opsman.yml
+              VARS_FILES: vars/foundations/((foundation))/vars
+              SOURCE: s3
 
           - task: create-vm
             image: platform-automation-image
