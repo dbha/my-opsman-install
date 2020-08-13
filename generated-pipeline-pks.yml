@@ -369,10 +369,11 @@ jobs:
             input_mapping:
               config: opsman-version-git
               vars: configuration
+#              vars: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
               #VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
-              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+              VARS_FILES: vars/foundations/((foundation))/vars
               SOURCE: s3
 
           - task: create-vm
