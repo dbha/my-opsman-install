@@ -364,6 +364,7 @@ jobs:
             <<: *prepare_tasks_with_secrets
 
           - task: download-product
+            attempts: 10
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
             input_mapping:
@@ -371,7 +372,7 @@ jobs:
               vars: configuration
             params:
               CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
-#              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+              VARS_FILES: vars/foundations/((foundation))/vars/opsman.yml
               SOURCE: s3
 
           - task: create-vm
