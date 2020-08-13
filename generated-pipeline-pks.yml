@@ -246,7 +246,7 @@ prepare_tasks_with_secrets: &prepare_tasks_with_secrets
     vars: configuration
   params:
     CONFIG_PATHS: config/foundations/((foundation))
-    VARS_PATHS: vars/foundations/((foundation))
+    VARS_PATHS: vars/foundations/((foundation))/vars
   output_mapping:
     tasks: platform-automation-tasks
 
@@ -370,7 +370,7 @@ jobs:
               vars: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
-              VARS_FILES: vars/foundations/((foundation))/vars
+              VARS_FILES: vars/foundations/((foundation))/vars/opsman.yml
               SOURCE: s3
 
           - task: create-vm
