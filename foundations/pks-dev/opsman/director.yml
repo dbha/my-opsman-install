@@ -38,30 +38,29 @@ iaas-configurations:
     ephemeral_datastores_string: ((iaas_configurations_0_ephemeral_datastores_string))
     name: default
     nsx_address: nsxmgr-01.haas-205.pez.pivotal.io
-    nsx_api_ca_certificate:
-      value: |-
-        -----BEGIN CERTIFICATE-----
-        MIIDljCCAn6gAwIBAgIGAXLDqHJHMA0GCSqGSIb3DQEBCwUAMIGLMSowKAYDVQQD
-        DCFuc3htZ3ItMDEuaGFhcy0yMDUucGV6LnBpdm90YWwuaW8xHTAbBgNVBAoMFFBp
-        dm90YWwgU29mdHdhcmUgSW5jMQwwCgYDVQQLDANQRVoxCzAJBgNVBAYTAlVTMQsw
-        CQYDVQQIDAJDQTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzAeFw0yMDA2MTcxOTAx
-        MzVaFw0zMDA2MTUxOTAxMzVaMIGLMSowKAYDVQQDDCFuc3htZ3ItMDEuaGFhcy0y
-        MDUucGV6LnBpdm90YWwuaW8xHTAbBgNVBAoMFFBpdm90YWwgU29mdHdhcmUgSW5j
-        MQwwCgYDVQQLDANQRVoxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEWMBQGA1UE
-        BwwNU2FuIEZyYW5jaXNjbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
-        AJgNXZ+yQWq31m2Eb57IY4MaL2HcxaybygTK8s9Y9gDloxn4RC+TutUIKtkCjaCs
-        7gB/bCKSQzqmnld5187a92dhxkm1fDHTu4on6bL7rDXLMviiPsiAbuZ4fCJawnSp
-        AIyqRlssBw8POTLvliPL3HbnSnt7frjtnJCNyLAWfKX9kGVpZ3ordY1OlCfOq18S
-        eqtGwgQzrE1vhBc09VizuyPrr/6F7ziH+5oR3cw9o+WabW3yCphX4yoaBOa49F6B
-        LSw/Ly6Opr7XtzZHu6i8qX5KSQQ+cBWcY6sUzBoQJjnpVQuFBusGaVcIxfzGp4N2
-        Civf0uX94PZE+2/uv7JuXT8CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAfnESFIbl
-        HinrWJH5U6IXBMOtZkaYmrQuiEHMiMv9EpSF8q4QKTjtT91ZNDDCYbe7iYPWVUi9
-        NW9Xffdoj2glvMoKQ3HCNY/IFAkai6ru2AmXDO7c9jQkz9Ke5ndUuSd1XNS/ofW1
-        iqjjV7GkJS39J0yrud57iW8jpmYizJHNb0BgMz6xYqw4P72qquhgaTOMOEK5ubO8
-        DorpDw/xARdpU82p1tDHe5Cvxeem8Bm4uLIXPlaKuycR+XbUFgEv615BsugS7YZU
-        xpvvmfpzfrDd8ll4NN8wJzvgs23sDk78Qj/bneAFggSH32OOl7irZvMPGMjF123H
-        Cy5OxlZ9nQLDmg==
-        -----END CERTIFICATE-----
+    nsx_api_ca_certificate: |-
+      -----BEGIN CERTIFICATE-----
+      MIIDljCCAn6gAwIBAgIGAXLDqHJHMA0GCSqGSIb3DQEBCwUAMIGLMSowKAYDVQQD
+      DCFuc3htZ3ItMDEuaGFhcy0yMDUucGV6LnBpdm90YWwuaW8xHTAbBgNVBAoMFFBp
+      dm90YWwgU29mdHdhcmUgSW5jMQwwCgYDVQQLDANQRVoxCzAJBgNVBAYTAlVTMQsw
+      CQYDVQQIDAJDQTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzAeFw0yMDA2MTcxOTAx
+      MzVaFw0zMDA2MTUxOTAxMzVaMIGLMSowKAYDVQQDDCFuc3htZ3ItMDEuaGFhcy0y
+      MDUucGV6LnBpdm90YWwuaW8xHTAbBgNVBAoMFFBpdm90YWwgU29mdHdhcmUgSW5j
+      MQwwCgYDVQQLDANQRVoxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEWMBQGA1UE
+      BwwNU2FuIEZyYW5jaXNjbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEB
+      AJgNXZ+yQWq31m2Eb57IY4MaL2HcxaybygTK8s9Y9gDloxn4RC+TutUIKtkCjaCs
+      7gB/bCKSQzqmnld5187a92dhxkm1fDHTu4on6bL7rDXLMviiPsiAbuZ4fCJawnSp
+      AIyqRlssBw8POTLvliPL3HbnSnt7frjtnJCNyLAWfKX9kGVpZ3ordY1OlCfOq18S
+      eqtGwgQzrE1vhBc09VizuyPrr/6F7ziH+5oR3cw9o+WabW3yCphX4yoaBOa49F6B
+      LSw/Ly6Opr7XtzZHu6i8qX5KSQQ+cBWcY6sUzBoQJjnpVQuFBusGaVcIxfzGp4N2
+      Civf0uX94PZE+2/uv7JuXT8CAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAfnESFIbl
+      HinrWJH5U6IXBMOtZkaYmrQuiEHMiMv9EpSF8q4QKTjtT91ZNDDCYbe7iYPWVUi9
+      NW9Xffdoj2glvMoKQ3HCNY/IFAkai6ru2AmXDO7c9jQkz9Ke5ndUuSd1XNS/ofW1
+      iqjjV7GkJS39J0yrud57iW8jpmYizJHNb0BgMz6xYqw4P72qquhgaTOMOEK5ubO8
+      DorpDw/xARdpU82p1tDHe5Cvxeem8Bm4uLIXPlaKuycR+XbUFgEv615BsugS7YZU
+      xpvvmfpzfrDd8ll4NN8wJzvgs23sDk78Qj/bneAFggSH32OOl7irZvMPGMjF123H
+      Cy5OxlZ9nQLDmg==
+      -----END CERTIFICATE-----
 #    nsx_api_ca_certificate: ((nsx_api_ca_cert.certificate))
     nsx_mode: ((iaas_configurations_0_nsx_mode))
     nsx_networking_enabled: ((iaas_configurations_0_nsx_networking_enabled))
