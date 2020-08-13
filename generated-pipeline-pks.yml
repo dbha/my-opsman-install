@@ -350,7 +350,7 @@ jobs:
               OPSMAN_CONFIG_FILE: foundations/((foundation))/opsman/opsman.yml
               STATE_FILE: foundations/((foundation))/state/state.yml
 
-#          - task: download-product
+#          - task: download-product d
 #            image: platform-automation-image
 #            file: platform-automation-tasks/tasks/download-product.yml
 #            input_mapping:
@@ -364,15 +364,15 @@ jobs:
             <<: *prepare_tasks_with_secrets
 
           - task: download-product
-            attempts: 10
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
             input_mapping:
               config: opsman-version-git
               vars: configuration
             params:
-              CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
-              VARS_FILES: vars/foundations/((foundation))/vars/opsman.yml
+              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
+              #VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
               SOURCE: s3
 
           - task: create-vm
