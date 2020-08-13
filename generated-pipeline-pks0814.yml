@@ -181,6 +181,7 @@ resources:
       bucket: ((s3.buckets.bbr-backup))
       regexp: ((foundation))-director-backup_(.*).tar
       skip_ssl_verification: true
+
   - name: pks-version-git
     type: semver-config
     source:
@@ -214,7 +215,7 @@ resources:
 #      skip_ssl_verification: true
 #      paths:
 #        - foundations/((foundation))/versions/healthwatch.yml
-#
+
 #  - name: pks-version-git
 #    type: git
 #    source:
@@ -224,8 +225,6 @@ resources:
 #      skip_ssl_verification: true
 #      paths:
 #        - foundations/((foundation))/versions/pks.yml
-
-
 
   - name: bbr-pks-backup-bucket
     type: s3
@@ -237,6 +236,20 @@ resources:
       bucket: ((s3.buckets.bbr-backup))
       regexp: ((foundation))-pivotal-container-service-backup_(.*).tgz
       skip_ssl_verification: true
+
+#prepare_tasks_with_secrets: &prepare_tasks_with_secrets
+#  image: platform-automation-image
+#  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#  input_mapping:
+#    tasks: platform-automation-tasks
+#    config: configuration
+#    vars: configuration
+#  params:
+#    CONFIG_PATHS: config/foundations/((foundation))
+#    VARS_PATHS: vars/foundations/((foundation))/vars
+#  output_mapping:
+#    tasks: platform-automation-tasks
+
 jobs:
   - name: install-opsman
     serial: true
@@ -259,6 +272,9 @@ jobs:
           - get: opsman-version-git
           - get: opsman_vm_state
       - do:
+#          - task: prepare_tasks_with_secrets
+#            <<: *prepare_tasks_with_secrets
+
           - task: prepare_tasks_with_secrets
             image: platform-automation-image
             file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
@@ -271,6 +287,7 @@ jobs:
               VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
             output_mapping:
               tasks: platform-automation-tasks
+
           - task: prepare_tasks_with_product_version
             image: platform-automation-image
             file: pipelines/tasks/prepare-tasks-with-secrets.yml
@@ -334,6 +351,7 @@ jobs:
             params:
               OPSMAN_CONFIG_FILE: foundations/((foundation))/opsman/opsman.yml
               STATE_FILE: foundations/((foundation))/state/state.yml
+
           - task: download-product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
@@ -343,6 +361,23 @@ jobs:
             params:
               CONFIG_FILE: semver-config.yaml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+
+#          - task: prepare_tasks_with_secrets
+#            <<: *prepare_tasks_with_secrets
+#
+#          - task: download-product
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/download-product.yml
+#            input_mapping:
+#              config: opsman-version-git
+#              vars: configuration
+##              vars: configuration
+#            params:
+#              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
+#              #VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+#              VARS_FILES: vars/foundations/((foundation))/vars
+#              SOURCE: s3
+
           - task: create-vm
             image: platform-automation-image
             file: platform-automation-tasks/tasks/create-vm.yml
@@ -812,6 +847,7 @@ jobs:
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               SUBSTITUTE_CREDENTIALS_WITH_PLACEHOLDERS: false
+
   - name: bbr-backup-director
     serial: true
     serial_groups:
