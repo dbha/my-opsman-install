@@ -370,7 +370,7 @@ jobs:
               vars: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
-              VARS_FILES: vars/foundations/((foundation))/vars/opsman.yml
+              VARS_FILES: vars/foundations/((foundation))/vars/version.yml
               SOURCE: s3
 
           - task: create-vm
