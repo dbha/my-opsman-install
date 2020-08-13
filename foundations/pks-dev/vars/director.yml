@@ -13,7 +13,7 @@ properties_configuration_security_configuration_generate_vm_passwords: 'true'
 #iaas-configurations_0_vcenter_password: -> credhub
 trusted_certificates: ""
 iaas_configurations_0_name: 'default'
-iaas_configurations_0_nsx_address:
+iaas_configurations_0_nsx_address: 'nsxmgr-01.haas-205.pez.pivotal.io'
 #iaas-configurations_0_nsx_api_ca_certificate: -> credhub => ((nsx_api_ca_cert.certificate))
 iaas_configurations_0_nsx_mode: 'nsx-t'
 iaas_configurations_0_nsx_t_auth_type: 'local_user'
