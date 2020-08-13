@@ -370,7 +370,7 @@ jobs:
               config: opsman-version-git
               vars: configuration
             params:
-#              CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
+              CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
 #              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
               SOURCE: s3
 
