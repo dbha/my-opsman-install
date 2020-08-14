@@ -388,6 +388,7 @@ jobs:
 #              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
 #            output_mapping:
 #              tasks: platform-automation-tasks
+
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
@@ -399,9 +400,10 @@ jobs:
               config: configuration
               vars: configuration
             params:
-              ENV_FILE: foundations/((foundation))/opsman/env.yml
+              ENV_FILE: env/foundations/((foundation))/opsman/env.yml
               DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
+
   - name: configure-director-only
     serial: true
     serial_groups:
