@@ -398,13 +398,12 @@ jobs:
             file: platform-automation-tasks/tasks/configure-director.yml
             input_mapping:
               env: configuration
-#              config: configuration
-              config: opsman-version-git
-              vars: configurationt
+              config: configuration
+              vars: configuration
 
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              DIRECTOR_CONFIG_FILE: cofig/foundations/((foundation))/opsman/director.yml
+              DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
 
   - name: configure-director-only
