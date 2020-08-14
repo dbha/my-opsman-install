@@ -149,6 +149,7 @@ resources:
       api_token: ((pivnet.token))
       product_slug: p-bosh-backup-and-restore
       product-version: ^1\.5\..*$
+
   - name: bbr-director-backup-bucket
     type: s3
     source:
@@ -237,6 +238,9 @@ jobs:
           - get: opsman_vm_state
       - do:
           - task: prepare_tasks_with_secrets
+            <<: *prepare_tasks_with_secrets
+
+          - task: prepare_tasks_with_secrets
             image: platform-automation-image
             file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
             input_mapping:
@@ -245,47 +249,49 @@ jobs:
               vars: configuration
             params:
               CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+              VARS_PATHS: vars/foundations/((foundation))/vars
             output_mapping:
               tasks: platform-automation-tasks
-          - task: prepare_tasks_with_product_version
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: opsman-version-git
-              vars: configuration
-            params:
-              CONFIG_PATHS: config
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_secrets
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
-          - task: prepare_custom_tasks_with_product_version
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              vars: configuration
-              config: opsman-version-git
-            params:
-              CONFIG_PATHS: config
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
+
+#          - task: prepare_tasks_with_product_version
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: opsman-version-git
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_custom_tasks_with_secrets
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
+#          - task: prepare_custom_tasks_with_product_version
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              vars: configuration
+#              config: opsman-version-git
+#            params:
+#              CONFIG_PATHS: config
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
+
           - task: echo_files
             config:
               platform: linux
@@ -311,6 +317,7 @@ jobs:
             params:
               OPSMAN_CONFIG_FILE: foundations/((foundation))/opsman/opsman.yml
               STATE_FILE: foundations/((foundation))/state/state.yml
+
           - task: download-product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
@@ -318,7 +325,7 @@ jobs:
               config: opsman-version-git
               vars: configuration
             params:
-              CONFIG_FILE: semver-config.yaml
+              CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 
           - task: create-vm
