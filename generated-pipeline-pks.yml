@@ -375,6 +375,7 @@ jobs:
               unpack: true
           - get: pipelines
           - get: configuration
+          - get: opsman-version-git
       - do:
 #          - task: prepare_tasks_with_secrets
 #            image: platform-automation-image
@@ -397,11 +398,13 @@ jobs:
             file: platform-automation-tasks/tasks/configure-director.yml
             input_mapping:
               env: configuration
-              config: configuration
-              vars: configuration
+#              config: configuration
+              config: opsman-version-git
+              vars: configurationt
+
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
+              DIRECTOR_CONFIG_FILE: cofig/foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
 
   - name: configure-director-only
