@@ -385,7 +385,7 @@ jobs:
               vars: configuration
             params:
               CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+              VARS_PATHS: vars/foundations/((foundation))/vars
             output_mapping:
               tasks: platform-automation-tasks
 
