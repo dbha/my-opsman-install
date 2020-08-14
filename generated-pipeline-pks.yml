@@ -213,8 +213,8 @@ prepare_tasks_with_secrets: &prepare_tasks_with_secrets
   params:
     CONFIG_PATHS: config/foundations/((foundation))
     VARS_PATHS: vars/foundations/((foundation))
-  output_mapping:
-    tasks: platform-automation-tasks
+#  output_mapping:
+#    tasks: platform-automation-tasks
 
 jobs:
   - name: install-opsman
@@ -391,14 +391,16 @@ jobs:
 
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
+            output_mapping:
+            tasks: configuration
 
           - task: configure-director
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-director.yml
             input_mapping:
-              env: platform-automation-tasks
-              config: platform-automation-tasks
-              vars: platform-automation-tasks
+              env: configuration
+              config: configuration
+              vars: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
