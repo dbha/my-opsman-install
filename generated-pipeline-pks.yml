@@ -240,6 +240,8 @@ jobs:
       - do:
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
+              output_mapping:
+              tasks: platform-automation-tasks
 
           - task: echo_files
             config:
@@ -391,8 +393,8 @@ jobs:
 
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
-            output_mapping:
-            tasks: configuration
+              output_mapping:
+              tasks: configuration
 
           - task: configure-director
             image: platform-automation-image
