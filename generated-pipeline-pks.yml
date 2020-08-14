@@ -407,10 +407,10 @@ jobs:
       builds: 100
     plan:
       - in_parallel:
-#          - get: pipeline-trigger-version-git
-#            passed:
-#              - configure-opsman-authentication
-#            trigger: true
+          - get: pipeline-trigger-version-git
+            passed:
+              - configure-opsman-authentication
+            trigger: true
           - get: platform-automation-image
             params:
               unpack: true
@@ -462,18 +462,21 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
+            <<: *prepare_tasks_with_secrets
+
           - task: configure-director
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-director.yml
@@ -481,10 +484,12 @@ jobs:
               env: configuration
               config: configuration
               vars: configuration
+              SOURCE: S3
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
+
   - name: opsman-custom-vm-extensions
     serial: true
     serial_groups:
