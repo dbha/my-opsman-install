@@ -3,8 +3,8 @@ opsman-configuration:
   vsphere:
     vcenter:
       url: vcsa-01.haas-205.pez.pivotal.io
-      username: ((iaas-configurations_0_vcenter_username))
-      password: ((iaas-configurations_0_vcenter_password))
+      username: ((iaas_configurations_0_vcenter_username))
+      password: ((iaas_configurations_0_vcenter_password))
       datastore: LUN01
       ca_cert:
       host:          # vCenter host to deploy Ops Manager in
