@@ -68,10 +68,11 @@ resource_types:
     source:
       repository: pivotalcf/pivnet-resource
       tag: latest-final
-#  - name: semver-config
-#    type: docker-image
-#    source:
-#      repository: itstarting/semver-config-concourse-resource
+
+  - name: semver-config
+    type: docker-image
+    source:
+      repository: itstarting/semver-config-concourse-resource
 
 resources:
   - name: pipeline-trigger-version-git
@@ -201,18 +202,18 @@ resources:
       regexp: ((foundation))-pivotal-container-service-backup_(.*).tgz
       skip_ssl_verification: true
 
-prepare_tasks_with_secrets: &prepare_tasks_with_secrets
-  image: platform-automation-image
-  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-  input_mapping:
-    tasks: platform-automation-tasks
-    config: configuration
-    vars: configuration
-  params:
-    CONFIG_PATHS: config/foundations/((foundation))
-    VARS_PATHS: vars/foundations/((foundation))
-  output_mapping:
-    tasks: platform-automation-tasks
+#prepare_tasks_with_secrets: &prepare_tasks_with_secrets
+#  image: platform-automation-image
+#  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#  input_mapping:
+#    tasks: platform-automation-tasks
+#    config: configuration
+#    vars: configuration
+#  params:
+#    CONFIG_PATHS: config/foundations/((foundation))
+#    VARS_PATHS: vars/foundations/((foundation))
+#  output_mapping:
+#    tasks: platform-automation-tasks
 
 jobs:
   - name: install-opsman
@@ -407,10 +408,10 @@ jobs:
       builds: 100
     plan:
       - in_parallel:
-          - get: pipeline-trigger-version-git
-            passed:
-              - configure-opsman-authentication
-            trigger: true
+#          - get: pipeline-trigger-version-git
+#            passed:
+#              - configure-opsman-authentication
+#            trigger: true
           - get: platform-automation-image
             params:
               unpack: true
@@ -714,34 +715,31 @@ jobs:
           - get: opsman-version-git
           - get: opsman_vm_state
       - do:
-#          - task: prepare_tasks_with_secrets
-#            image: platform-automation-image
-#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: platform-automation-tasks
-#              config: configuration
-#              vars: configuration
-#            params:
-#              CONFIG_PATHS: config/foundations/((foundation))/opsman
-#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-#            output_mapping:
-#              tasks: platform-automation-tasks
-#          - task: prepare_custom_tasks_with_product_version
-#            image: platform-automation-image
-#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: pipelines
-#              vars: configuration
-#              config: opsman-version-git
-#            params:
-#              CONFIG_PATHS: config
-#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-#              TASKS_PATH: tasks/tasks
-#            output_mapping:
-#              tasks: pipelines
           - task: prepare_tasks_with_secrets
-            <<: *prepare_tasks_with_secrets
-
+            image: platform-automation-image
+            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+            input_mapping:
+              tasks: platform-automation-tasks
+              config: configuration
+              vars: configuration
+            params:
+              CONFIG_PATHS: config/foundations/((foundation))/opsman
+              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+            output_mapping:
+              tasks: platform-automation-tasks
+          - task: prepare_custom_tasks_with_product_version
+            image: platform-automation-image
+            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+            input_mapping:
+              tasks: pipelines
+              vars: configuration
+              config: opsman-version-git
+            params:
+              CONFIG_PATHS: config
+              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+              TASKS_PATH: tasks/tasks
+            output_mapping:
+              tasks: pipelines
           - task: export-installation
             image: platform-automation-image
             file: platform-automation-tasks/tasks/export-installation.yml
