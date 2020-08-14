@@ -240,18 +240,18 @@ jobs:
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
-          - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
 
 #          - task: prepare_tasks_with_product_version
 #            image: platform-automation-image
@@ -325,7 +325,7 @@ jobs:
               config: opsman-version-git
               vars: configuration
             params:
-              CONFIG_FILE: config/foundations/((foundation))/versions/opsman.yml
+              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 
           - task: create-vm
