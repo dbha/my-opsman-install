@@ -400,7 +400,7 @@ jobs:
               config: configuration
               vars: configuration
             params:
-              ENV_FILE: env/foundations/((foundation))/opsman/env.yml
+              ENV_FILE: foundations/((foundation))/opsman/env.yml
               DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
 
