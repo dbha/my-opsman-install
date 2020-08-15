@@ -561,7 +561,6 @@ jobs:
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
-
           - task: apply-director-changes
             image: platform-automation-image
             file: platform-automation-tasks/tasks/apply-director-changes.yml
@@ -569,9 +568,10 @@ jobs:
               env: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
+
           - put: pipeline-trigger-version-git
             params:
-              file: pipeline-trigger-version-git/version
+              file: foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
 
   - name: upgrade-opsman
     serial: true
