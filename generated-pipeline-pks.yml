@@ -435,7 +435,8 @@ jobs:
 #              CONFIG_PATHS: config/foundations/((foundation))/opsman
 #              VARS_PATHS: vars/foundations/((foundation))/vars
 #            output_mapping:
-              tasks: platform-automation-tasks
+#              tasks: platform-automation-tasks
+
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
