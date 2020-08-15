@@ -74,26 +74,26 @@ resource_types:
 #    source:
 #      repository: itstarting/semver-config-concourse-resource
 
-#resources:
-#  - name: pipeline-trigger-version-git
-#    type: git
-#    source:
-#      private_key: ((git.private_key))
-#      uri: ((git.platform_automation_configs.uri))
-#      branch: ((git.platform_automation_configs.branch))
-#      skip_ssl_verification: true
-#      paths:
-#        - foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
-
 resources:
   - name: pipeline-trigger-version-git
-    type: semver
+    type: git
     source:
-      driver: git
+      private_key: ((git.private_key))
       uri: ((git.platform_automation_configs.uri))
       branch: ((git.platform_automation_configs.branch))
-      file: foundations/((foundation))/pipeline_trigger_version_pks-dev-pipeline
-      private_key: ((git.private_key))
+      skip_ssl_verification: true
+      paths:
+        - foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
+
+#resources:
+#  - name: pipeline-trigger-version-git
+#    type: semver
+#    source:
+#      driver: git
+#      uri: ((git.platform_automation_configs.uri))
+#      branch: ((git.platform_automation_configs.branch))
+#      file: foundations/((foundation))/pipeline_trigger_version_pks-dev-pipeline
+#      private_key: ((git.private_key))
 
 
   - name: platform-automation-tasks
@@ -581,8 +581,7 @@ jobs:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
 
           - put: pipeline-trigger-version-git
-            params:
-              file: pipeline-trigger-version-git/version
+            params: {file: pipeline-trigger-version-git/version}
 
   - name: upgrade-opsman
     serial: true
