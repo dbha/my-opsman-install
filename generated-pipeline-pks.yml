@@ -397,7 +397,7 @@ jobs:
               unpack: true
           - get: pipelines
           - get: configuration
-          - get: config
+#          - get: config
       - do:
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
@@ -408,7 +408,7 @@ jobs:
             input_mapping:
               tasks: platform-automation-tasks
               env: configuration
-#              config: configuration
+              config: configuration
               vars: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
