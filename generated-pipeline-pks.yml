@@ -180,7 +180,7 @@ resources:
       branch: ((git.platform_automation_configs.branch))
       skip_ssl_verification: true
       paths:
-        - foundations/((foundation))/opsman/opsman.yml
+        - foundations/((foundation))/opsman/env.yml
 
   - name: healthwatch2-version-git
     type: git
@@ -459,7 +459,7 @@ jobs:
               config: configuration
               vars: configuration
             params:
-              ENV_FILE: foundations/((foundation))/opsman/env2.yml
+              ENV_FILE: foundations/((foundation))/opsman/env.yml
               DIRECTOR_CONFIG_FILE: foundations/((foundation))/opsman/director.yml
               VARS_FILES: vars/foundations/((foundation))/vars/director.yml
 
