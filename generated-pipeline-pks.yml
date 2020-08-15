@@ -387,20 +387,7 @@ jobs:
           - get: configuration
       - do:
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-
-#          - task: prepare_tasks_with_secrets
-#            <<: *prepare_tasks_with_secrets
+            <<: *prepare_tasks_with_secrets
 
           - task: configure-director
             image: platform-automation-image
@@ -435,19 +422,6 @@ jobs:
           - get: configuration
           - get: opsman-env-git
       - do:
-#          - task: prepare_tasks_with_secrets
-#            image: platform-automation-image
-#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: platform-automation-tasks
-#              config: configuration
-#              vars: configuration
-#            params:
-#              CONFIG_PATHS: config/foundations/((foundation))/opsman
-#              VARS_PATHS: vars/foundations/((foundation))/vars
-#            output_mapping:
-#              tasks: platform-automation-tasks
-
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
