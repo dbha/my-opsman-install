@@ -342,18 +342,22 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
+            <<: *prepare_tasks_with_secrets
+
           - task: configure-authentication
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-authentication.yml
@@ -459,31 +463,35 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_custom_tasks_with_secrets
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
+
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_secrets
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
+            <<: *prepare_tasks_with_secrets
+
           - task: opsman-custom-vm-extensions-for-lb-security-groups
             image: platform-automation-image
             file: pipelines/tasks/opsman-custom-vm-extensions.yml
@@ -491,6 +499,7 @@ jobs:
               env: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
+
   - name: apply-director-changes
     serial: true
     serial_groups:
@@ -514,31 +523,36 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_custom_tasks_with_secrets
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
+
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_secrets
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
+            <<: *prepare_tasks_with_secrets
+
+
           - task: apply-director-changes
             image: platform-automation-image
             file: platform-automation-tasks/tasks/apply-director-changes.yml
@@ -549,6 +563,7 @@ jobs:
           - put: pipeline-trigger-version-git
             params:
               file: pipeline-trigger-version-git/version
+
   - name: upgrade-opsman
     serial: true
     serial_groups:
@@ -570,31 +585,34 @@ jobs:
           - get: opsman-version-git
           - get: opsman_vm_state
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_custom_tasks_with_product_version
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              vars: configuration
+#              config: opsman-version-git
+#            params:
+#              CONFIG_PATHS: config
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_product_version
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              vars: configuration
-              config: opsman-version-git
-            params:
-              CONFIG_PATHS: config
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
+            <<: *prepare_tasks_with_secrets
+
           - task: download-product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
@@ -705,6 +723,7 @@ jobs:
           - put: installation
             params:
               file: installation/((foundation))-installation*.zip
+
   - name: extract-director-config
     serial: true
     plan:
@@ -745,6 +764,7 @@ jobs:
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               SUBSTITUTE_CREDENTIALS_WITH_PLACEHOLDERS: false
+
   - name: bbr-backup-director
     serial: true
     serial_groups:
