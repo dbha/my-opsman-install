@@ -349,9 +349,9 @@ jobs:
     plan:
       - in_parallel:
           - get: pipeline-trigger-version-git
-            passed:
-              - install-opsman
-            trigger: true
+#            passed:
+#              - install-opsman
+#            trigger: true
           - get: platform-automation-image
             params:
               unpack: true
@@ -397,9 +397,9 @@ jobs:
     plan:
       - in_parallel:
           - get: pipeline-trigger-version-git
-            passed:
-              - configure-opsman-authentication
-            trigger: true
+#            passed:
+#              - configure-opsman-authentication
+#            trigger: true
           - get: platform-automation-image
             params:
               unpack: true
@@ -471,9 +471,9 @@ jobs:
     plan:
       - in_parallel:
           - get: pipeline-trigger-version-git
-            passed:
-              - configure-director
-            trigger: true
+#            passed:
+#              - configure-director
+#            trigger: true
           - get: platform-automation-image
             params:
               unpack: true
@@ -532,8 +532,8 @@ jobs:
           - get: pipeline-trigger-version-git
             params:
               bump: patch
-            passed:
-              - opsman-custom-vm-extensions
+#            passed:
+#              - opsman-custom-vm-extensions
           - get: platform-automation-image
             params:
               unpack: true
