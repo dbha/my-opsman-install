@@ -455,7 +455,7 @@ jobs:
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-director.yml
             input_mapping:
-              env: opsman-env-git
+              env: configuration
               config: configuration
               vars: configuration
             params:
