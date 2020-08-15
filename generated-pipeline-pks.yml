@@ -571,7 +571,7 @@ jobs:
 
           - put: pipeline-trigger-version-git
             params:
-              file: foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
+              file: foundations/((foundation))/pipeline_trigger_version_pks_dev-pipeline
 
   - name: upgrade-opsman
     serial: true
