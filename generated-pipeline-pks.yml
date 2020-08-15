@@ -92,7 +92,7 @@ resources:
       driver: git
       uri: ((git.platform_automation_configs.uri))
       branch: ((git.platform_automation_configs.branch))
-      file: foundations/((foundation))/pipeline_trigger_version_((pipeline_name))
+      file: foundations/((foundation))/pipeline_trigger_version_pks-dev-pipeline
       private_key: ((git.private_key))
 
 
