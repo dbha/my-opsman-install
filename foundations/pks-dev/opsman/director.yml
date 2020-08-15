@@ -105,8 +105,7 @@ properties-configuration:
   security_configuration:
     generate_vm_passwords: ((properties_configuration_security_configuration_generate_vm_passwords))
     opsmanager_root_ca_trusted_certs: true
-#    trusted_certificates: ((director_trusted_certificates.certificate))
-    trusted_certificates: []
+    trusted_certificates: ((director_trusted_certificates))
 resource-configuration:
   compilation:
     additional_networks: []
