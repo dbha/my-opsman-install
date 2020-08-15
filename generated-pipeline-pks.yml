@@ -172,6 +172,16 @@ resources:
       paths:
         - foundations/((foundation))/versions/opsman.yml
 
+  - name: opsman-env-git
+    type: git
+    source:
+      private_key: ((git.private_key))
+      uri: ((git.platform_automation_configs.uri))
+      branch: ((git.platform_automation_configs.branch))
+      skip_ssl_verification: true
+      paths:
+        - foundations/((foundation))/opsman/opsman.yml
+
   - name: healthwatch2-version-git
     type: git
     source:
@@ -423,7 +433,7 @@ jobs:
               unpack: true
           - get: pipelines
           - get: configuration
-          - get: opsman-version-git
+          - get: opsman-env-git
       - do:
 #          - task: prepare_tasks_with_secrets
 #            image: platform-automation-image
@@ -445,7 +455,7 @@ jobs:
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-director.yml
             input_mapping:
-              env: opsman-version-git
+              env: opsman-env-git
               config: configuration
               vars: configuration
             params:
