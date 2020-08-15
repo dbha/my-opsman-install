@@ -123,13 +123,13 @@ resources:
       branch: ((git.platform_automation_configs.branch))
       skip_ssl_verification: true
 
-  - name: config
-    type: git
-    source:
-      private_key: ((git.private_key))
-      uri: ((git.platform_automation_configs.uri))
-      branch: ((git.platform_automation_configs.branch))
-      skip_ssl_verification: true
+#  - name: config
+#    type: git
+#    source:
+#      private_key: ((git.private_key))
+#      uri: ((git.platform_automation_configs.uri))
+#      branch: ((git.platform_automation_configs.branch))
+#      skip_ssl_verification: true
 
   - name: installation
     type: s3
