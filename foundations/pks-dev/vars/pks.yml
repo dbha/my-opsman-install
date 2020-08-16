@@ -38,6 +38,8 @@ plan1_selector_active_az_placement_az1: pks-az1
 plan1_selector_active_az_placement_az2: pks-az2
 plan1_selector_active_az_placement_az3: pks-az3
 
+#network_selector_nsx_nsx-t-superuser-certificate_certificate => credhub
+
 #pivotal_container_service_instance_type
 #pivotal_container_service_max_in_flight
 #pivotal_container_service_persistent_disk_size
