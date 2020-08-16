@@ -10,6 +10,10 @@ product-properties:
     value: ((properties_grafana_pks_version))
   .grafana.root_url:
     value: ((properties_grafana_root_url))
+  .grafana.ssl_certificates:
+    value:
+      cert_pem: ((grafana_ssl_certificates.certificate))
+      private_key_pem: ((grafana_ssl_certificates.private_key))
   .grafana.static_ips:
     value: ((properties_grafana_static_ips))
   .properties.canary_exporter_targets:
@@ -46,8 +50,35 @@ product-properties:
     selected_option: ((properties_remote_write_basic_auth_selected_option))
     value: ((properties_remote_write_basic_auth_value))
   .properties.scrape_configs:
-    selected_option: ((properties_scrape_configs_selected_option))
-    value: ((properties_scrape_configs_value))
+    value:
+    - ca: null
+      insecure_skip_verify: true
+      scrape_job: |-
+        job_name: nginx-telegraf
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets:
+            - "172.28.3.5:9113"
+            - "172.28.3.7:9113"
+      server_name: null
+      tls_certificates:
+        cert_pem: ''
+        private_key_pem: ''
+    - ca: null
+      insecure_skip_verify: true
+      scrape_job: |-
+        job_name: mariadb-telegraf
+        metrics_path: /metrics
+        scheme: http
+        static_configs:
+          - targets:
+            - "172.28.3.5:9104"
+            - "172.28.3.7:9104"
+      server_name: null
+      tls_certificates:
+        cert_pem: ''
+        private_key_pem: ''
   .properties.smtp:
     selected_option: ((properties_smtp_selected_option))
     value: ((properties_smtp_value))
