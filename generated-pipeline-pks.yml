@@ -1154,8 +1154,22 @@ jobs:
 #            output_mapping:
 #              tasks: pipelines
 
+#prepare_tasks_with_secrets: &prepare_tasks_with_secrets
+#  image: platform-automation-image
+#  file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#  input_mapping:
+#    tasks: platform-automation-tasks
+#    config: configuration
+#    vars: configuration
+#  params:
+#    CONFIG_PATHS: config/foundations/((foundation))
+#    VARS_PATHS: vars/foundations/((foundation))/vars
+#  output_mapping:
+#    tasks: platform-automation-tasks
+
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
+              tasks: pipelines
 
           - task: configure_product
             image: platform-automation-image
@@ -1170,7 +1184,7 @@ jobs:
 
           - task: apply_product_changes
             image: platform-automation-image
-            file: pipelines/tasks/apply-product-changes.yml
+            file: tasks/tasks/apply-product-changes.yml
             input_mapping:
               env: configuration
             params:
