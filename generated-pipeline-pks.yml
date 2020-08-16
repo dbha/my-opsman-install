@@ -1128,31 +1128,34 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_custom_tasks_with_secrets
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_secrets
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
+            <<: *prepare_tasks_with_secrets
+
           - task: configure_product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/configure-product.yml
@@ -1162,7 +1165,8 @@ jobs:
             params:
               CONFIG_FILE: foundations/((foundation))/products/pks.yml
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              VARS_FILES: config/foundations/((foundation))/generated-vars/pks.yml config/foundations/((foundation))/vars/pks.yml
+              VARS_FILES: config/foundations/((foundation))/vars/pks.yml
+
           - task: apply_product_changes
             image: platform-automation-image
             file: pipelines/tasks/apply-product-changes.yml
@@ -1171,6 +1175,7 @@ jobs:
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
               PRODUCT_NAME: pivotal-container-service
+
   - name: bbr-backup-pks
     serial: true
     serial_groups:
