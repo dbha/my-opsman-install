@@ -1153,6 +1153,7 @@ jobs:
 #              TASKS_PATH: tasks/tasks
 #            output_mapping:
 #              tasks: pipelines
+
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
@@ -1169,7 +1170,7 @@ jobs:
 
           - task: apply_product_changes
             image: platform-automation-image
-            file: pipelines/tasks/apply-product-changes.yml
+            file: platform-automation-image/tasks/apply-product-changes.yml
             input_mapping:
               env: configuration
             params:
