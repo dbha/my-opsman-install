@@ -1380,7 +1380,7 @@ jobs:
               config: healthwatch2-version-git
               vars: configuration
             params:
-              CONFIG_FILE: foundation/((foundation))/versions/healthwatch2.yml
+              CONFIG_FILE: foundations/((foundation))/versions/healthwatch2.yml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 
       - in_parallel:
