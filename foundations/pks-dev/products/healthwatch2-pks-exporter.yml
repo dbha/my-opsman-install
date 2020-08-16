@@ -7,7 +7,7 @@ product-properties:
   .bosh-health-exporter.health_check_az:
     value: ((properties_bosh_health_exporter_health_check_az))
   .pks-sli-exporter.pks_ca:
-    value: ((properties_pks_sli_exporter_pks_ca))
+    value: ((properties_pks_sli_exporter_pks_ca.certificate))
   .pks-sli-exporter.skip_ssl_verification:
     value: ((properties_pks_sli_exporter_skip_ssl_verification))
   .pks-sli-exporter.test_frequency_seconds:
