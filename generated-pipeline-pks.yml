@@ -523,8 +523,8 @@ jobs:
 #            output_mapping:
 #              tasks: pipelines
 
-          - task: prepare_tasks_with_secrets
-            <<: *prepare_tasks_with_secrets
+          - task: prepare_custom_tasks_with_secrets
+            <<: *prepare_custom_tasks_with_secrets
 
           - task: opsman-custom-vm-extensions-for-lb-security-groups
             image: platform-automation-image
