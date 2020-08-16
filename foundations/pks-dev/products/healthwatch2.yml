@@ -44,8 +44,14 @@ product-properties:
     value: ((pivotal_container_service_pks_tls.certificate))
   .properties.pks_cluster_discovery.enabled.pks_skip_ssl_verification:
     value: ((properties_pks_cluster_discovery_enabled_pks_skip_ssl_verification))
+  .properties.pks_cluster_discovery.enabled.pks_uaa_admin_password:
+    value:
+      secret: ((properties_pks_cluster_discovery_enabled_pks_uaa_admin_password))
   .properties.pks_cluster_discovery.enabled.pks_uaa_client:
     value: ((properties_pks_cluster_discovery_enabled_pks_uaa_client))
+  .properties.pks_cluster_discovery.enabled.pks_uaa_client_secret:
+    value:
+      secret: ((properties_pks_cluster_discovery_enabled_pks_uaa_client_secret))
   .properties.remote_write_basic_auth:
     selected_option: ((properties_remote_write_basic_auth_selected_option))
     value: ((properties_remote_write_basic_auth_value))
