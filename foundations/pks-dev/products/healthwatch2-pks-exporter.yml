@@ -1,7 +1,9 @@
 product-name: p-healthwatch2-pks-exporter
 product-properties:
   .bosh-deployments-exporter.bosh_client:
-    value: {}
+    value:
+      identity: ((properties_bosh_deployments_exporter_bosh_client_identity))
+      password: ((properties_boss_deployments_exporter_bosh_client_password))
   .bosh-health-exporter.health_check_az:
     value: ((properties_bosh_health_exporter_health_check_az))
   .pks-sli-exporter.pks_ca:
@@ -122,6 +124,7 @@ resource-config:
 errand-config:
   smoke-test:
     post-deploy-state: true
+
 syslog-properties:
   address: null
   custom_rsyslog_configuration: null
