@@ -1170,7 +1170,7 @@ jobs:
 
           - task: apply_product_changes
             image: platform-automation-image
-            file: platform-automation-image/tasks/apply-product-changes.yml
+            file: pipelines/tasks/apply-product-changes.yml
             input_mapping:
               env: configuration
             params:
