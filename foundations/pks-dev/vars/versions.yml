@@ -18,9 +18,9 @@ products:
     pivnet-api-token: ((pivnet_token))
 
   pks:
-    product-version: "1.7.0"
-    pivnet-product-slug: pivotal-container-service
-    pivnet-file-glob: "pivotal-container-service*.pivotal"
+#    product-version: "1.7.0"
+#    pivnet-product-slug: pivotal-container-service
+#    pivnet-file-glob: "pivotal-container-service*.pivotal"
     stemcell-iaas: vsphere
     s3-endpoint: ((s3_endpoint))
     s3-region-name: ((s3_region))
@@ -31,9 +31,9 @@ products:
     pivnet-api-token: ((pivnet_token))
 
   healthwatch2:
-    product-version: "2.0.2-build.83"
-    pivnet-product-slug: p-healthwatch
-    pivnet-file-glob: "healthwatch-2.0.2-*.pivotal"
+#    product-version: "2.0.2-build.83"
+#    pivnet-product-slug: p-healthwatch
+#    pivnet-file-glob: "healthwatch-2.0.2-*.pivotal"
     stemcell-iaas: vsphere
     s3-endpoint: ((s3_endpoint))
     s3-region-name: ((s3_region))

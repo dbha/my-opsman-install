@@ -209,7 +209,7 @@ resources:
       branch: ((git.platform_automation_configs.branch))
       skip_ssl_verification: true
       paths:
-        - foundations/((foundation))/versions/healthwatch.yml
+        - foundations/((foundation))/versions/healthwatch2.yml
 
   - name: pks-version-git
     type: git
@@ -1084,31 +1084,7 @@ jobs:
           - get: pipelines
           - get: configuration
       - do:
-#          - task: prepare_tasks_with_secrets
-#            image: platform-automation-image
-#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: platform-automation-tasks
-#              config: configuration
-#              vars: configuration
-#            params:
-#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-#            output_mapping:
-#              tasks: platform-automation-tasks
-#          - task: prepare_custom_tasks_with_secrets
-#            image: platform-automation-image
-#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: pipelines
-#              config: configuration
-#              vars: configuration
-#            params:
-#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-#              TASKS_PATH: tasks/tasks
-#            output_mapping:
-#              tasks: pipelines
+
           - task: prepare_tasks_with_secrets
             <<: *prepare_tasks_with_secrets
 
@@ -1344,54 +1320,59 @@ jobs:
           - get: configuration
           - get: healthwatch2-version-git
       - do:
+#          - task: prepare_tasks_with_secrets
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#          - task: prepare_tasks_with_product_version
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: platform-automation-tasks
+#              config: healthwatch2-version-git
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#            output_mapping:
+#              tasks: platform-automation-tasks
+#
+#          - task: prepare_custom_tasks_with_secrets
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              config: configuration
+#              vars: configuration
+#            params:
+#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+#            output_mapping:
+#              tasks: pipelines
+#          - task: prepare_custom_tasks_with_product_version
+#            image: platform-automation-image
+#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
+#            input_mapping:
+#              tasks: pipelines
+#              vars: configuration
+#              config: healthwatch2-version-git
+#            params:
+#              CONFIG_PATHS: config
+#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
+#              TASKS_PATH: tasks/tasks
+
           - task: prepare_tasks_with_secrets
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_tasks_with_product_version
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: platform-automation-tasks
-              config: healthwatch2-version-git
-              vars: configuration
-            params:
-              CONFIG_PATHS: config
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-            output_mapping:
-              tasks: platform-automation-tasks
-          - task: prepare_custom_tasks_with_secrets
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              config: configuration
-              vars: configuration
-            params:
-              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
-            output_mapping:
-              tasks: pipelines
-          - task: prepare_custom_tasks_with_product_version
-            image: platform-automation-image
-            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-            input_mapping:
-              tasks: pipelines
-              vars: configuration
-              config: healthwatch2-version-git
-            params:
-              CONFIG_PATHS: config
-              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-              TASKS_PATH: tasks/tasks
+            <<: *prepare_tasks_with_secrets
+
           - task: download_product
             image: platform-automation-image
             file: platform-automation-tasks/tasks/download-product.yml
@@ -1399,8 +1380,9 @@ jobs:
               config: healthwatch2-version-git
               vars: configuration
             params:
-              CONFIG_FILE: semver-config.yaml
+              CONFIG_FILE: foundation/((foundation))/versions/healthwatch2.yml
               VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
+
       - in_parallel:
           - task: upload_product
             image: platform-automation-image
@@ -1428,10 +1410,9 @@ jobs:
               env: configuration
               config: configuration
             params:
-              CONFIG_FILE: foundations/((foundation))/products/healthwatch.yml
+              CONFIG_FILE: foundations/((foundation))/products/healthwatch2.yml
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              VARS_FILES: config/foundations/((foundation))/generated-vars/healthwatch.yml config/foundations/((foundation))/vars/healthwatch.yml
-
+              VARS_FILES: config/foundations/((foundation))/vars/healthwatch2.yml
 
   - name: configure-healthwatch2-only
     serial: true
@@ -1482,9 +1463,9 @@ jobs:
               config: configuration
               env: configuration
             params:
-              CONFIG_FILE: foundations/((foundation))/products/healthwatch.yml
+              CONFIG_FILE: foundations/((foundation))/products/healthwatch2.yml
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              VARS_FILES: config/foundations/((foundation))/generated-vars/healthwatch.yml config/foundations/((foundation))/vars/healthwatch.yml
+              VARS_FILES: config/foundations/((foundation))/generated-vars/healthwatch2.yml config/foundations/((foundation))/vars/healthwatch2.yml
 
   - name: apply-change-healthwatch2
     serial: true
@@ -1537,9 +1518,9 @@ jobs:
               config: configuration
               env: configuration
             params:
-              CONFIG_FILE: foundations/((foundation))/products/healthwatch.yml
+              CONFIG_FILE: foundations/((foundation))/products/healthwatch2.yml
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              VARS_FILES: config/foundations/((foundation))/generated-vars/healthwatch.yml config/foundations/((foundation))/vars/healthwatch.yml
+              VARS_FILES: config/foundations/((foundation))/generated-vars/healthwatch2.yml config/foundations/((foundation))/vars/healthwatch2.yml
           - task: apply_product_changes
             image: platform-automation-image
             file: pipelines/tasks/apply-product-changes.yml
