@@ -38,6 +38,51 @@ plan1_selector_active_az_placement_az1: pks-az1
 plan1_selector_active_az_placement_az2: pks-az2
 plan1_selector_active_az_placement_az3: pks-az3
 
+
+plan1_selector_active_addons_spec: |-
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: healthwatch
+  rules:
+  - resources:
+      - pods/proxy
+      - pods
+      - nodes
+      - nodes/proxy
+      - namespace/pods
+      - endpoints
+      - services
+    verbs:
+      - get
+      - watch
+      - list
+    apiGroups:
+      - ""
+  - nonResourceURLs: ["/metrics"]
+    verbs: ["get"]
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: healthwatch
+  roleRef:
+    apiGroup: ""
+    kind: ClusterRole
+    name: healthwatch
+  subjects:
+  - apiGroup: ""
+    kind: User
+    name: healthwatch
+    namespace: pks-system
+  ---
+
+telegraf_selector_enabled_bosh_metric_sink_outputs: |-
+  [[outputs.prometheus_client]]
+    ## Address to listen on.
+    listen = ":10200"
+
 #network_selector_nsx_nsx-t-superuser-certificate_certificate => credhub
 
 #pivotal_container_service_instance_type
@@ -47,7 +92,7 @@ plan1_selector_active_az_placement_az3: pks-az3
 #pks_db_max_in_flight
 #pks_db_persistent_disk_size
 
-# plan1_selector_active_addons_spec: credhub
+
 
 ######################################################
 #network_name:
