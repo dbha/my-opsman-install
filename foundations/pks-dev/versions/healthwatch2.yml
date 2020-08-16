@@ -1,4 +1,4 @@
-product-version: "2.0.3-build.83"
+product-version: "2.0.3-build.9"
 pivnet-product-slug: p-healthwatch
 pivnet-file-glob: "healthwatch-2.0.3-*.pivotal"
 stemcell-iaas: vsphere
