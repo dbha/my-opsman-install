@@ -19,7 +19,7 @@ clone_db_post_deploy_state: true
 delete_all_clusters_pre_delete_state: true
 pks_nsx_t_precheck_post_deploy_state: true
 smoke_tests_post_deploy_state: false
-upgrade_all_service_instances_post_deploy_state: true
+upgrade_all_service_instances_post_deploy_state: false
 wavefront_alert_creation_post_deploy_state: false
 wavefront_alert_deletion_pre_delete_state: false
 
