@@ -1,0 +1,15 @@
+#properties
+properties_bosh_health_exporter_health_check_az: pks-az1
+properties_pks_sli_exporter_skip_ssl_verification: false
+properties_exporter_scrape_port: 9090
+properties_pks_sli_exporter_scrape_port:
+# network
+network_properties_network_name: PKS-Services
+network_properties_other_availability_zones_az1: pks-az1
+network_properties_other_availability_zones_az2: pks-az2
+network_properties_other_availability_zones_az3: pks-az3
+network_properties_service_network: PKS-Services
+network_properties_singleton_availability_zone: pks-az1
+
+#credhub
+#properties_pks_sli_exporter_pks_ca:
