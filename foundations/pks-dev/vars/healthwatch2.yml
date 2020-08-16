@@ -1,6 +1,6 @@
 properties_grafana_pks_version: 1.7
 properties_grafana_root_url: https://grafana.pksdemo.net
-properties_grafana_static_ips: 172.16.2.60,172.16.2.61,172.16.2.62,172.16.2.63
+properties_grafana_static_ips: "172.16.2.60,172.16.2.61,172.16.2.62,172.16.2.63"
 properties_properties_canary_exporter_targets: https://api.pksdemo.net:8443
 properties_pks_cluster_discovery_enabled_pks_uaa_client: admin
 properties_grafana_authentication_selected_option: basic
