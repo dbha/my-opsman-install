@@ -1076,7 +1076,7 @@ jobs:
                 PRODUCT_NAME: pivotal-container-service
           - put: bbr-pks-backup-bucket
             params:
-              file: backup-artifact/((foundation))-pivotal-container-service-backup_*.tgz
+              file: backup-artifact/((foundation))-pivotal-container-service-backup-*.tgz
   - name: test
     serial: true
     plan:
