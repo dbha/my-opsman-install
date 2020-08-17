@@ -17,7 +17,7 @@ inputs:
 
 params:
   ENV_FILE: env.yml
-  PRODUCT_NAME: cf
+  PRODUCT_NAME:
 
 run:
   path: bash
