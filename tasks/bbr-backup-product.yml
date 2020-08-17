@@ -30,7 +30,7 @@ run:
     - |
       #!/usr/bin/env bash
 
-      set -eu
+      #set -eu
 
       #cat deployed_products.json
       ## install jq
