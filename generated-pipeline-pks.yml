@@ -528,8 +528,8 @@ jobs:
           - get: pipeline-trigger-version-git
             params:
               bump: patch
-#            passed:
-#              - opsman-custom-vm-extensions
+            passed:
+              - opsman-custom-vm-extensions
           - get: platform-automation-image
             params:
               unpack: true
