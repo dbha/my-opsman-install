@@ -1432,7 +1432,7 @@ jobs:
       - in_parallel:
           - get: pipeline-trigger-version-git
             passed:
-              - configure-healthwatch2-only
+              - configure-healthwatch2-pks-exporter-only
             trigger: false
           - get: platform-automation-image
             params:
