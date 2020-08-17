@@ -33,7 +33,7 @@ run:
       set -eu
 
       current_date="$( date +"%Y-%m-%d-%H-%M-%S" )"
-      BACKUP_FILE=${BACKUP_FILE}_${current_date}.tgz
+      BACKUP_FILE=${BACKUP_FILE}-${current_date}.tgz
 
       ## for BOSH_xxx
       om --env ./config/$ENV_FILE bosh-env > bosh-env.sh
