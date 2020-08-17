@@ -46,15 +46,15 @@ run:
       om --env ./config/$ENV_FILE bosh-env > bosh-env.sh
       source bosh-env.sh
       #DEBUG
-      env
+      #env
 
       ## Get CF deployment guid
       om --env ./config/$ENV_FILE curl -p /api/v0/deployed/products > deployed_products.json
       DEPLOYMENT_NAME=$(jq -r '.[] | select(.type == "'${PRODUCT_NAME}'") | .guid' "deployed_products.json")
       export DEPLOYMENT_NAME
-      echo $DEPLOYMENT_NAME
+      #echo $DEPLOYMENT_NAME
 
-      mv ./bbr-release/*linux* ./bbr-release/bbr
+      cp ./bbr-release/*linux* ./bbr-release/bbr
       chmod +x ./bbr-release/bbr
 
       # Get bbr ssh credentials
@@ -64,7 +64,7 @@ run:
       jq -r '.[] | .value.private_key_pem' bbr_ssh_credentials.json > bbr_ssh_credentials
 
       ##DEBUG
-      cat bbr_ssh_credentials
+      #cat bbr_ssh_credentials
 
       # BOSH_CA_CERT
       WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
