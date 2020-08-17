@@ -69,7 +69,7 @@ run:
       # BOSH_CA_CERT
       WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
       printf -- "$BOSH_CA_CERT" > ${WORK_DIR}/bosh_ca.crt
-      PATH-TO-BOSH-SERVER-CERT=${WORK_DIR}/bosh_ca.crt
+      PATH-TO-BOSH-SERVER-CERT=$(${WORK_DIR}/bosh_ca.crt)
 
       pushd backup-artifact
         ../bbr-release/bbr deployment --target "${BOSH_ENVIRONMENT}" \
