@@ -20,8 +20,8 @@ outputs:
 
 params:
   ENV_FILE: env.yml
-  FOUNDATION:
-  BACKUP_FILE: director-backup_${current_date}.tgz
+  BACKUP_FILE: ${FOUNDATION}-director-backup
+#  BACKUP_FILE: director-backup_${current_date}.tgz
 
 run:
   path: bash
@@ -33,6 +33,7 @@ run:
       set -eu
 
       current_date="$( date +"%Y-%m-%d-%H-%M-%S" )"
+      BACKUP_FILE=${FOUNDATION}-director-backup_${current_date}.tgz
 
       ## for BOSH_xxx
       om --env ./config/$ENV_FILE bosh-env > bosh-env.sh
