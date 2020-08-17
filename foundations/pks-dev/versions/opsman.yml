@@ -1,4 +1,4 @@
-product-version: "2.9.1"
+product-version: "2.9.8"
 pivnet-product-slug: ops-manager
 pivnet-file-glob: "*.ova"
 #    download-stemcell: "false"
