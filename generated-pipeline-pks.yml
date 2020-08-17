@@ -747,7 +747,7 @@ jobs:
           - task: bbr-cleanup
             file: pipelines/tasks/bbr-cleanup-director.yml
             input_mapping:
-              bbr-release: bbr-release-pivnets
+              bbr-release: bbr-release-pivnet
               config: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
