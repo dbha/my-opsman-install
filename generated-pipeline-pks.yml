@@ -1032,19 +1032,7 @@ jobs:
               globs:
                 - bbr-*-linux-*
       - do:
-#          - task: prepare_custom_tasks_with_secrets
-#            image: platform-automation-image
-#            file: pipelines/tasks/prepare-tasks-with-secrets.yml
-#            input_mapping:
-#              tasks: pipelines
-#              config: configuration
-#              vars: configuration
-#            params:
-#              CONFIG_PATHS: config/foundations/((foundation))/opsman config/foundations/((foundation))/products
-#              VARS_PATHS: vars/foundations/((foundation))/generated-vars vars/foundations/((foundation))/vars
-#              TASKS_PATH: tasks/tasks
-#            output_mapping:
-#              tasks: pipelines
+
           - task: prepare_custom_tasks_with_secrets
             <<: *prepare_custom_tasks_with_secrets
 
