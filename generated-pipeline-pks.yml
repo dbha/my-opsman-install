@@ -745,7 +745,7 @@ jobs:
               config: configuration
             params:
               ENV_FILE: foundations/((foundation))/opsman/env.yml
-              FOUNDATION: ((foundation))
+              BACKUP_FILE: ((foundation))-director-backup
             on_failure:
               task: bbr-cleanup
               file: pipelines/tasks/bbr-cleanup-director.yml
@@ -754,7 +754,6 @@ jobs:
                 config: configuration
               params:
                 ENV_FILE: foundations/((foundation))/opsman/env.yml
-                FOUNDATION: ((foundation))
           - put: bbr-director-backup-bucket
             params:
               file: backup-artifact/((foundation))-director-backup_*.tgz

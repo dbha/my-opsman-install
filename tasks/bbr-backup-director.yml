@@ -20,8 +20,7 @@ outputs:
 
 params:
   ENV_FILE: env.yml
-  FOUNDATION:
-  BACKUP_FILE: ${FOUNDATION}-director-backup
+  BACKUP_FILE:
 #  BACKUP_FILE: director-backup_${current_date}.tgz
 
 run:
@@ -42,7 +41,7 @@ run:
       #DEBUG
       #env
 
-      mv ./bbr-release/*linux* ./bbr-release/bbr
+      cp ./bbr-release/*linux* ./bbr-release/bbr
       chmod +x ./bbr-release/bbr
 
       # Get bbr ssh credentials
