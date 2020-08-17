@@ -757,7 +757,7 @@ jobs:
                 FOUNDATION: ((foundation))
           - put: bbr-director-backup-bucket
             params:
-              file: backup-artifact/((foundation))-director-backup-*.tgz
+              file: backup-artifact/((foundation))-director-backup_*.tgz
 
   - name: delete-opsman
     serial: true

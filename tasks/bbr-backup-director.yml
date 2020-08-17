@@ -30,16 +30,16 @@ run:
     - |
       #!/usr/bin/env bash
 
-      set -eu
+      #set -eu
 
       current_date="$( date +"%Y-%m-%d-%H-%M-%S" )"
-      BACKUP_FILE=${BACKUP_FILE}-${current_date}.tgz
+      BACKUP_FILE=${BACKUP_FILE}_${current_date}.tgz
 
       ## for BOSH_xxx
       om --env ./config/$ENV_FILE bosh-env > bosh-env.sh
       source bosh-env.sh
       #DEBUG
-      env
+      #env
 
       mv ./bbr-release/*linux* ./bbr-release/bbr
       chmod +x ./bbr-release/bbr
@@ -51,7 +51,7 @@ run:
       jq -r '.[] | .value.private_key_pem' bbr_ssh_credentials.json > bbr_ssh_credentials
 
       ##DEBUG
-      cat bbr_ssh_credentials
+      #cat bbr_ssh_credentials
 
       pushd backup-artifact
         ../bbr-release/bbr director --host "${BOSH_ENVIRONMENT}" \
