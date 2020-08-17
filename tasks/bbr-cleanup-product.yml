@@ -44,13 +44,12 @@ run:
       # BOSH_CA_CERT
       WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
       printf -- "$BOSH_CA_CERT" > ${WORK_DIR}/bosh_ca.crt
-      chmod 600 ${WORK_DIR}/bosh_ca.crt
-      PATH-TO-BOSH-SERVER-CERT=$(${WORK_DIR}/bosh_ca.crt)
+      PATH_TO_BOSH_SERVER_CERT=(${WORK_DIR}/bosh_ca.crt)
 
       ./bbr-release/bbr deployment --target "${BOSH_ENVIRONMENT}" \
       --username $BOSH_CLIENT \
       --password $BOSH_CLIENT_SECRET \
       --deployment $DEPLOYMENT_NAME \
-      --ca-cert $PATH-TO-BOSH-SERVER-CERT \
+      --ca-cert $PATH_TO_BOSH_SERVER_CERT \
       backup-cleanup
 
