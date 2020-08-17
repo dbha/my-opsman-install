@@ -66,12 +66,17 @@ run:
       ##DEBUG
       cat bbr_ssh_credentials
 
+      # BOSH_CA_CERT
+      WORK_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+      printf -- "$BOSH_CA_CERT" > ${WORK_DIR}/bosh_ca.crt
+      PATH-TO-BOSH-SERVER-CERT=${WORK_DIR}/bosh_ca.crt
+
       pushd backup-artifact
         ../bbr-release/bbr deployment --target "${BOSH_ENVIRONMENT}" \
           --username $BOSH_CLIENT \
           --password $BOSH_CLIENT_SECRET \
           --deployment $DEPLOYMENT_NAME \
-          --ca-cert $BOSH_CA_CERT \
+          --ca-cert $PATH-TO-BOSH-SERVER-CERT \
           backup
 
         tar -zcvf "${FOUNDATION}-${PRODUCT_NAME}-backup-${current_date}.tgz" --remove-files -- */*
