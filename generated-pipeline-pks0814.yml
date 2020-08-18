@@ -376,7 +376,6 @@ jobs:
 #              CONFIG_FILE: foundations/((foundation))/versions/opsman.yml
 #              #VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 #              VARS_FILES: vars/foundations/((foundation))/vars
-#              SOURCE: s3
 
           - task: create-vm
             image: platform-automation-image
