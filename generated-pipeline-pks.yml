@@ -1314,7 +1314,7 @@ jobs:
               vars: configuration
             params:
               CONFIG_FILE: foundations/((foundation))/versions/healthwatch2-pks-exporter.yml
-              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml: s3
+              VARS_FILES: vars/foundations/((foundation))/vars/versions.yml
 
       - in_parallel:
           - task: upload_product
