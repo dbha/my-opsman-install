@@ -8,6 +8,7 @@ iaas_configurations_0_nsx_networking_enabled: 'true'
 iaas_configurations_0_persistent_datastores_string: 'LUN01'
 iaas_configurations_0_ssl_verification_enabled: 'false'
 iaas_configurations_0_vcenter_host: 'vcsa-01.haas-205.pez.pivotal.io'
+configuration_director_configuration_identification_tags: 'iaas: pks-dev'
 #iaas-configurations_0_vcenter_username: -> credhub
 properties_configuration_security_configuration_generate_vm_passwords: 'true'
 #iaas_configurations_0_vcenter_password: -> credhub
