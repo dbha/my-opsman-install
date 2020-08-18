@@ -1337,37 +1337,37 @@ jobs:
       - do:
 
           # Test 2Task before stage_configure_apply
-          - task: stage-product
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/stage-product.yml
-            input_mapping:
-              product: downloaded-product
-              env: configuration
-            params:
-              ENV_FILE: foundations/((foundation))/opsman/env.yml
-
-          - task: configure_product
-            image: platform-automation-image
-            file: platform-automation-tasks/tasks/configure-product.yml
-            input_mapping:
-              config: configuration
-              env: configuration
-            params:
-              CONFIG_FILE: foundations/((foundation))/products/healthwatch2-pks-exporter.yml
-              ENV_FILE: foundations/((foundation))/opsman/env.yml
-              VARS_FILES: config/foundations/((foundation))/vars/healthwatch2-pks-exporter.yml
-
-#          - task: stage_configure_apply
+#          - task: stage-product
 #            image: platform-automation-image
-#            file: platform-automation-tasks/tasks/stage-configure-apply.yml
+#            file: platform-automation-tasks/tasks/stage-product.yml
 #            input_mapping:
 #              product: downloaded-product
 #              env: configuration
+#            params:
+#              ENV_FILE: foundations/((foundation))/opsman/env.yml
+#
+#          - task: configure_product
+#            image: platform-automation-image
+#            file: platform-automation-tasks/tasks/configure-product.yml
+#            input_mapping:
 #              config: configuration
+#              env: configuration
 #            params:
 #              CONFIG_FILE: foundations/((foundation))/products/healthwatch2-pks-exporter.yml
 #              ENV_FILE: foundations/((foundation))/opsman/env.yml
 #              VARS_FILES: config/foundations/((foundation))/vars/healthwatch2-pks-exporter.yml
+
+          - task: stage_configure_apply
+            image: platform-automation-image
+            file: platform-automation-tasks/tasks/stage-configure-apply.yml
+            input_mapping:
+              product: downloaded-product
+              env: configuration
+              config: configuration
+            params:
+              CONFIG_FILE: foundations/((foundation))/products/healthwatch2-pks-exporter.yml
+              ENV_FILE: foundations/((foundation))/opsman/env.yml
+              VARS_FILES: config/foundations/((foundation))/vars/healthwatch2-pks-exporter.yml
 
   - name: configure-healthwatch2-pks-exporter-only
     serial: true
